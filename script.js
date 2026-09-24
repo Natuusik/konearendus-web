@@ -102,11 +102,10 @@ if (toggleReviewsBtnEE && hiddenReviewsBlockEE) {
 }
 
 // ==========================================
-// 6. ОФИЦИАЛЬНЫЙ СТАБИЛЬНЫЙ ВЫВОД ЖИВЫХ ОТЗЫВОВ ИЗ GOOGLE ТАБЛИЦЫ
+// 6. ОФИЦИАЛЬНЫЙ СУПЕР-СТАБИЛЬНЫЙ ВЫВОД ОТЗЫВОВ В РЕАЛЬНОМ ВРЕМЕНИ (ПО НОМЕРАМ КОЛОНОК)
 // ==========================================
 const SPREADSHEET_ID_LIVE = '1vRWFc0vzMKemSERcbU8PqCCD0bC0Q-Aurodclh9s_0';
-const GOOGLE_JSON_URL = `https://google.com{SPREADSHEET_ID_LIVE}/gviz/tq?tqx=out:json&sheet=Form_Responses`;
-
+const GOOGLE_JSON_URL = `https://google.com{SPREADSHEET_ID_LIVE}/gviz/tq?tqx=out:json&gid=0`;
 
 async function loadLiveReviewsFromGoogle() {
     const containers = [
@@ -125,19 +124,21 @@ async function loadLiveReviewsFromGoogle() {
         const data = JSON.parse(jsonText);
         const rows = data.table.rows;
 
-        // Если в таблице пусто, оставляем отзывы по умолчанию и выходим
+        // Если в таблице пусто, выходим
         if (!rows || rows.length === 0) return;
 
         const styles = ['review-mint', 'review-peach', 'review-cyan', 'review-lavender'];
         containers.forEach(container => { if(container) container.innerHTML = ''; });
 
         rows.forEach((row, index) => {
-            // Безопасно извлекаем данные из колонок Google Таблицы (Имя, Отзыв, Оценка)
-            const name = (row.c && row.c[1] && row.c[1].v) ? row.c[1].v.toString().trim() : 'Аноним';
-            const review = (row.c && row.c[2] && row.c[2].v) ? row.c[2].v.toString().trim() : '';
-            const starsValue = (row.c && row.c[3] && row.c[3].v) ? parseInt(row.c[3].v) : 5;
+            // Считываем строго по номерам ячеек (0 - время, 1 - имя, 2 - отзыв, 3 - оценка)
+            if (!row.c || !row.c[2]) return; // Если текста отзыва нет, пропускаем строчку
+
+            const name = (row.c[1] && row.c[1].v) ? row.c[1].v.toString().trim() : 'Аноним';
+            const review = (row.c[2] && row.c[2].v) ? row.c[2].v.toString().trim() : '';
+            const starsValue = (row.c[3] && row.c[3].v) ? parseInt(row.c[3].v) : 5;
             
-            if (!review) return; // Пропускаем пустые строки
+            if (!review) return;
 
             const starsNum = isNaN(starsValue) ? 5 : starsValue;
             const stars = '⭐'.repeat(starsNum);
@@ -167,3 +168,4 @@ async function loadLiveReviewsFromGoogle() {
 }
 
 document.addEventListener('DOMContentLoaded', loadLiveReviewsFromGoogle);
+
