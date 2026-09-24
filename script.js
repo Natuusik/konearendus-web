@@ -105,7 +105,8 @@ if (toggleReviewsBtnEE && hiddenReviewsBlockEE) {
 // 6. ОФИЦИАЛЬНЫЙ СТАБИЛЬНЫЙ ВЫВОД ЖИВЫХ ОТЗЫВОВ ИЗ GOOGLE ТАБЛИЦЫ
 // ==========================================
 const SPREADSHEET_ID_LIVE = '1vRWFc0vzMKemSERcbU8PqCCD0bC0Q-Aurodclh9s_0';
-const GOOGLE_JSON_URL = `https://google.com{SPREADSHEET_ID_LIVE}/gviz/tq?tqx=out:json`;
+const GOOGLE_JSON_URL = `https://google.com{SPREADSHEET_ID_LIVE}/gviz/tq?tqx=out:json&sheet=Form_Responses`;
+
 
 async function loadLiveReviewsFromGoogle() {
     const containers = [
