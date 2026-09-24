@@ -5,7 +5,7 @@ document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
         
-        // Если ссылка ведет на другой файл, разрешаем обычный переход
+        // Если ссылка ведет на другой файл или внешний сайт, разрешаем обычный переход
         if (!targetId.startsWith('#')) return; 
         
         e.preventDefault();
@@ -69,39 +69,77 @@ if (speechFormEE) {
 }
 
 // ==========================================
-// 5. АВТОМАТИЧЕСКИЙ ВЫВОД ОТЗЫВОВ ИЗ GOOGLE ТАБЛИЦЫ
+// 5. ИНТЕРАКТИВНОЕ РАСКРЫТИЕ ОТЗЫВОВ НА ГЛАВНОЙ СТРАНИЦЕ
 // ==========================================
-const SPREADSHEET_KEY = '2PACX-1vRWFc0vzMKemSERcbU8PqCCD0bC0Q-Aurodclh9s_0C4w-NgG26L8Bbnr0qLk-kPKw5qnobkJTsuBaD';
-const REVIEWS_FETCH_URL = `https://google.com{SPREADSHEET_KEY}/pub?output=csv`;
+const toggleReviewsBtn = document.getElementById('toggleReviewsBtn');
+const hiddenReviewsBlock = document.getElementById('hiddenReviewsBlock');
+
+if (toggleReviewsBtn && hiddenReviewsBlock) {
+    toggleReviewsBtn.addEventListener('click', function(e) {
+        e.preventDefault(); // Предотвращает прыжок страницы вверх
+        hiddenReviewsBlock.classList.toggle('show');
+        if (hiddenReviewsBlock.classList.contains('show')) {
+            this.textContent = 'Свернуть отзывы ▲';
+        } else {
+            this.textContent = 'Смотреть все отзывы ▼';
+        }
+    });
+}
+
+const toggleReviewsBtnEE = document.getElementById('toggleReviewsBtnEE');
+const hiddenReviewsBlockEE = document.getElementById('hiddenReviewsBlockEE');
+
+if (toggleReviewsBtnEE && hiddenReviewsBlockEE) {
+    toggleReviewsBtnEE.addEventListener('click', function(e) {
+        e.preventDefault();
+        hiddenReviewsBlockEE.classList.toggle('show');
+        if (hiddenReviewsBlockEE.classList.contains('show')) {
+            this.textContent = 'Sule tagasiside ▲';
+        } else {
+            this.textContent = 'Vaata kõiki tagasisidesid ▼';
+        }
+    });
+}
+
+// ==========================================
+// 6. ОФИЦИАЛЬНЫЙ СТАБИЛЬНЫЙ ВЫВОД ЖИВЫХ ОТЗЫВОВ ИЗ GOOGLE ТАБЛИЦЫ
+// ==========================================
+const SPREADSHEET_ID_LIVE = '1vRWFc0vzMKemSERcbU8PqCCD0bC0Q-Aurodclh9s_0';
+const GOOGLE_JSON_URL = `https://google.com{SPREADSHEET_ID_LIVE}/gviz/tq?tqx=out:json`;
 
 async function loadLiveReviewsFromGoogle() {
     const containers = [
-        document.getElementById('reviewsContainer'),
-        document.getElementById('reviewsContainerEE')
+        document.getElementById('reviewsContainer'),   // Блок на русском
+        document.getElementById('reviewsContainerEE')  // Блок на эстонском
     ];
     
     if (!containers[0] && !containers[1]) return;
 
     try {
-        const response = await fetch(REVIEWS_FETCH_URL);
-        const csvText = await response.text();
+        const response = await fetch(GOOGLE_JSON_URL);
+        const text = await response.text();
         
-        const lines = csvText.split('\n').map(line => line.split(','));
-        if (lines.length <= 1) return;
+        // Очищаем ответ от технической обертки Google
+        const jsonText = text.substring(text.indexOf("google.visualization.Query.setResponse(") + 38, text.length - 2);
+        const data = JSON.parse(jsonText);
+        const rows = data.table.rows;
+
+        // Если в таблице пусто, оставляем отзывы по умолчанию и выходим
+        if (!rows || rows.length === 0) return;
 
         const styles = ['review-mint', 'review-peach', 'review-cyan', 'review-lavender'];
         containers.forEach(container => { if(container) container.innerHTML = ''; });
 
-        lines.slice(1).forEach((row, index) => {
-            if (row.length < 3) return;
-
-            const name = row[1] ? row[1].replace(/"/g, '').trim() : 'Аноним';
-            const review = row[2] ? row[2].replace(/"/g, '').trim() : '';
-            const starsNum = row[3] ? parseInt(row[3].replace(/"/g, '')) : 5;
+        rows.forEach((row, index) => {
+            // Безопасно извлекаем данные из колонок Google Таблицы (Имя, Отзыв, Оценка)
+            const name = (row.c && row.c[1] && row.c[1].v) ? row.c[1].v.toString().trim() : 'Аноним';
+            const review = (row.c && row.c[2] && row.c[2].v) ? row.c[2].v.toString().trim() : '';
+            const starsValue = (row.c && row.c[3] && row.c[3].v) ? parseInt(row.c[3].v) : 5;
             
-            if (!review) return;
+            if (!review) return; // Пропускаем пустые строки
 
-            const stars = '⭐'.repeat(isNaN(starsNum) ? 5 : starsNum);
+            const starsNum = isNaN(starsValue) ? 5 : starsValue;
+            const stars = '⭐'.repeat(starsNum);
             const currentStyle = styles[index % styles.length];
 
             const cardHTML = `
@@ -123,7 +161,7 @@ async function loadLiveReviewsFromGoogle() {
         });
 
     } catch (error) {
-        console.error('Не удалось загрузить отзывы:', error);
+        console.error('Критическая ошибка загрузки отзывов:', error);
     }
 }
 
