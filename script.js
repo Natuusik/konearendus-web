@@ -100,11 +100,11 @@ if (toggleReviewsBtnEE && hiddenReviewsBlockEE) {
 }
 
 // ==========================================
-// 6. АВТОМАТИЧЕСКИЙ ВЫВОД ОТЗЫВОВ (ПРЯМОЙ АДРЕС ДАННЫХ)
+// 6. АВТОМАТИЧЕСКИЙ ВЫВОД ОТЗЫВОВ (ПРЯМОЙ АДРЕС)
 // ==========================================
 const DIRECT_TABLE_URL = 'https://google.com';
 
-async function loadLiveReviewsFromGoogle() {
+async function loadLiveReviews() {
     const containers = [
         document.getElementById('reviewsContainer'),
         document.getElementById('reviewsContainerEE')
@@ -157,4 +157,4 @@ async function loadLiveReviewsFromGoogle() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', loadLiveReviewsFromGoogle);
+document.addEventListener('DOMContentLoaded', loadLiveReviews);
