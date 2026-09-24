@@ -44,3 +44,22 @@ if (speechFormEE) {
         this.reset();
     });
 }
+// Логика работы мобильного меню-бургера
+const burgerToggle = document.getElementById('burgerToggle');
+const navMenu = document.getElementById('navMenu');
+
+if (burgerToggle && navMenu) {
+    // Открытие/закрытие меню по клику на иконку
+    burgerToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navMenu.classList.toggle('open');
+    });
+
+    // Автоматическое закрытие меню при клике на любую ссылку внутри него
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            burgerToggle.classList.remove('active');
+            navMenu.classList.remove('open');
+        });
+    });
+}
