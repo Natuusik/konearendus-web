@@ -98,47 +98,106 @@ if (toggleReviewsBtnEE && hiddenReviewsBlockEE) {
         }
     });
 }
+// ==========================================
+// 6. ЖИВЫЕ ОТЗЫВЫ ИЗ GOOGLE ТАБЛИЦЫ
+// ==========================================
 
-// ==========================================
-// 6. СУПЕР-СТАБИЛЬНЫЙ ВЫВОД ЖИВЫХ ОТЗЫВОВ ИЗ GOOGLE ТАБЛИЦЫ
-// ==========================================
 const SPREADSHEET_ID_FINAL = '1vRWFc0vzMKemSERcbU8PqCCD0bC0Q-Aurodclh9s_0';
-const LIVE_JSON_ENDPOINT = `https://google.com{SPREADSHEET_ID_FINAL}/gviz/tq?tqx=out:json&gid=0`;
+
+const LIVE_JSON_ENDPOINT =
+`https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID_FINAL}/gviz/tq?tqx=out:json&gid=0`;
 
 async function loadLiveReviews() {
+
     const containers = [
         document.getElementById('reviewsContainer'),
         document.getElementById('reviewsContainerEE')
     ];
-    
-    if (!containers[0] && !containers[1]) return;
+
+    if (!containers[0] && !containers[1]) {
+        return;
+    }
 
     try {
+
+        console.log('Загружаем отзывы...');
+        console.log('URL:', LIVE_JSON_ENDPOINT);
+
         const response = await fetch(LIVE_JSON_ENDPOINT);
+
+        if (!response.ok) {
+            throw new Error(`HTTP ошибка: ${response.status}`);
+        }
+
         const text = await response.text();
-        
-        // Полная очистка от технического текста Google
-        const cleanJson = text.substring(text.indexOf("google.visualization.Query.setResponse(") + 38, text.length - 2);
+
+        const prefix = 'google.visualization.Query.setResponse(';
+
+        const start = text.indexOf(prefix);
+
+        if (start === -1) {
+            throw new Error('Google не вернул корректный JSON');
+        }
+
+        const cleanJson = text.substring(
+            start + prefix.length,
+            text.length - 2
+        );
+
         const parsedData = JSON.parse(cleanJson);
+
+        if (
+            !parsedData ||
+            !parsedData.table ||
+            !parsedData.table.rows
+        ) {
+            throw new Error('Структура данных Google Sheets не найдена');
+        }
+
         const tableRows = parsedData.table.rows;
 
-        if (!tableRows || tableRows.length === 0) return;
+        console.log('Полученные строки:', tableRows);
 
-        const styles = ['review-mint', 'review-peach', 'review-cyan', 'review-lavender'];
-        containers.forEach(container => { if (container) container.innerHTML = ''; });
+        const styles = [
+            'review-mint',
+            'review-peach',
+            'review-cyan',
+            'review-lavender'
+        ];
+
+        containers.forEach(container => {
+            if (container) {
+                container.innerHTML = '';
+            }
+        });
 
         tableRows.forEach((row, index) => {
-            if (!row.c || !row.c[2]) return; // Если текста отзыва нет, пропускаем строчку
 
-            const name = (row.c[1] && row.c[1].v) ? row.c[1].v.toString().trim() : 'Аноним';
-            const review = (row.c[2] && row.c[2].v) ? row.c[2].v.toString().trim() : '';
-            const starsVal = (row.c[3] && row.c[3].v) ? parseInt(row.c[3].v) : 5;
-            
+            if (!row.c) return;
+
+            // Ожидаем структуру:
+            // A = дата
+            // B = имя
+            // C = отзыв
+            // D = оценка
+
+            const name =
+                row.c[1]?.v?.toString().trim() || 'Аноним';
+
+            const review =
+                row.c[2]?.v?.toString().trim() || '';
+
+            const starsValue =
+                parseInt(row.c[3]?.v) || 5;
+
             if (!review) return;
 
-            const starsNum = isNaN(starsVal) ? 5 : starsVal;
-            const stars = '⭐'.repeat(starsNum);
-            const currentStyle = styles[index % styles.length];
+            const stars = '⭐'.repeat(
+                Math.min(Math.max(starsValue, 1), 5)
+            );
+
+            const currentStyle =
+                styles[index % styles.length];
 
             const cardHTML = `
                 <div class="review-premium-card ${currentStyle}">
@@ -154,13 +213,37 @@ async function loadLiveReviews() {
             `;
 
             containers.forEach(container => {
-                if (container) container.innerHTML += cardHTML;
+                if (container) {
+                    container.insertAdjacentHTML(
+                        'beforeend',
+                        cardHTML
+                    );
+                }
             });
         });
 
+        console.log('Отзывы успешно загружены');
+
     } catch (error) {
-        console.error('Ошибка при выводе живых отзывов:', error);
+
+        console.error(
+            'Ошибка при загрузке отзывов:',
+            error
+        );
+
+        containers.forEach(container => {
+            if (container) {
+                container.innerHTML = `
+                    <div class="review-premium-card review-peach">
+                        <p>
+                            Временно не удалось загрузить отзывы.
+                        </p>
+                    </div>
+                `;
+            }
+        });
     }
 }
 
 document.addEventListener('DOMContentLoaded', loadLiveReviews);
+
