@@ -863,3 +863,72 @@ footer {
         font-size: 1.5rem; 
     }
 }
+/* ==========================================
+   17. АНИМАЦИОННОЕ МОБИЛЬНОЕ МЕНЮ БУРГЕР
+   ========================================== */
+.menu-burger {
+    display: none; /* На компьютерах бургер скрыт */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.menu-burger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--dark-title);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Анимация превращения трех полосок в крестик (класс active добавит JS) */
+.menu-burger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: var(--primary-color);
+}
+
+.menu-burger.active span:nth-child(2) {
+    opacity: 0; /* Средняя полоска исчезает */
+}
+
+.menu-burger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: var(--primary-color);
+}
+
+/* Стили меню для мобильных экранов */
+@media (max-width: 768px) {
+    .menu-burger {
+        display: flex; /* Показываем бургер на телефонах */
+    }
+
+    .nav-links {
+        display: flex; /* Перебиваем старое скрытие display:none */
+        position: fixed;
+        top: -100%; /* Меню изначально спрятано над экраном */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        padding: 40px 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 999;
+    }
+
+    /* Класс для плавного выезда меню сверху вниз */
+    .nav-links.open {
+        top: 70px; /* Опускается ровно под шапку */
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+}
