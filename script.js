@@ -4,8 +4,6 @@
 document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
-        
-        // Если ссылка ведет на другой файл или внешний сайт, разрешаем обычный переход
         if (!targetId.startsWith('#')) return; 
         
         e.preventDefault();
@@ -76,7 +74,7 @@ const hiddenReviewsBlock = document.getElementById('hiddenReviewsBlock');
 
 if (toggleReviewsBtn && hiddenReviewsBlock) {
     toggleReviewsBtn.addEventListener('click', function(e) {
-        e.preventDefault(); // Предотвращает прыжок страницы вверх
+        e.preventDefault();
         hiddenReviewsBlock.classList.toggle('show');
         if (hiddenReviewsBlock.classList.contains('show')) {
             this.textContent = 'Свернуть отзывы ▲';
@@ -102,44 +100,38 @@ if (toggleReviewsBtnEE && hiddenReviewsBlockEE) {
 }
 
 // ==========================================
-// 6. СУПЕР-СТАБИЛЬНЫЙ АВТОМАТИЧЕСКИЙ ВЫВОД ЖИВЫХ ОТЗЫВОВ
+// 6. АВТОМАТИЧЕСКИЙ ВЫВОД ОТЗЫВОВ (ПРЯМОЙ АДРЕС ДАННЫХ)
 // ==========================================
-const GOOGLE_PUB_URL = 'https://google.com';
+const DIRECT_TABLE_URL = 'https://google.com';
 
 async function loadLiveReviewsFromGoogle() {
     const containers = [
-        document.getElementById('reviewsContainer'),   // Блок на русском
-        document.getElementById('reviewsContainerEE')  // Блок на эстонском
+        document.getElementById('reviewsContainer'),
+        document.getElementById('reviewsContainerEE')
     ];
     
     if (!containers[0] && !containers[1]) return;
 
     try {
-        const response = await fetch(GOOGLE_PUB_URL);
+        const response = await fetch(DIRECT_TABLE_URL);
         const csvText = await response.text();
         
-        // Разделяем строки таблицы
         const lines = csvText.split('\n').map(line => line.split(','));
         if (lines.length <= 1) return;
 
         const styles = ['review-mint', 'review-peach', 'review-cyan', 'review-lavender'];
-        
-        // Очищаем демонстрационные отзывы перед выводом реальных данных
         containers.forEach(container => { if(container) container.innerHTML = ''; });
 
-        // Перебираем строчки (пропуская первую строку-заголовок)
         lines.slice(1).forEach((row, index) => {
             if (row.length < 3) return;
 
-            // Очищаем ячейки от лишних кавычек Google (1 - имя, 2 - отзыв, 3 - оценка)
             const name = row[1] ? row[1].replace(/"/g, '').trim() : 'Аноним';
             const review = row[2] ? row[2].replace(/"/g, '').trim() : '';
-            const starsValue = row[3] ? parseInt(row[3].replace(/"/g, '')) : 5;
+            const starsNum = row[3] ? parseInt(row[3].replace(/"/g, '')) : 5;
             
-            if (!review) return; // Пропускаем пустые строки
+            if (!review) return;
 
-            const starsNum = isNaN(starsValue) ? 5 : starsValue;
-            const stars = '⭐'.repeat(starsNum);
+            const stars = '⭐'.repeat(isNaN(starsNum) ? 5 : starsNum);
             const currentStyle = styles[index % styles.length];
 
             const cardHTML = `
@@ -161,10 +153,8 @@ async function loadLiveReviewsFromGoogle() {
         });
 
     } catch (error) {
-        console.error('Ошибка загрузки живых отзывов:', error);
+        console.error('Ошибка загрузки отзывов:', error);
     }
 }
 
 document.addEventListener('DOMContentLoaded', loadLiveReviewsFromGoogle);
-
-
