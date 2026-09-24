@@ -92,3 +92,76 @@ if (toggleReviewsBtnEE && hiddenReviewsBlockEE) {
         }
     });
 }
+// ==========================================
+// 19. АВТОМАТИЧЕСКИЙ ВЫВОД ЖИВЫХ ОТЗЫВОВ ИЗ GOOGLE ТАБЛИЦЫ
+// ==========================================
+const SPREADSHEET_KEY = '2PACX-1vRWFc0vzMKemSERcbU8PqCCD0bC0Q-Aurodclh9s_0C4w-NgG26L8Bbnr0qLk-kPKw5qnobkJTsuBaD';
+const REVIEWS_FETCH_URL = `https://google.com{SPREADSHEET_KEY}/pub?output=csv`;
+
+async function loadLiveReviewsFromGoogle() {
+    const containers = [
+        document.getElementById('reviewsContainer'),   // Блок на русской версии
+        document.getElementById('reviewsContainerEE')  // Блок на эстонской версии
+    ];
+    
+    // Если на странице нет блоков отзывов, завершаем работу функции
+    if (!containers[0] && !containers[1]) return;
+
+    try {
+        const response = await fetch(REVIEWS_FETCH_URL);
+        const csvText = await response.text();
+        
+        // Разбираем CSV-строки из таблицы
+        const lines = csvText.split('\n').map(line => line.split(','));
+        if (lines.length <= 1) return; // Если в таблице только шапка, выходим
+
+        // Пастельные стили для красивого чередования карточек
+        const styles = ['review-mint', 'review-peach', 'review-cyan', 'review-lavender'];
+
+        // Очищаем статические примеры перед выводом реальных данных
+        containers.forEach(container => { if(container) container.innerHTML = ''; });
+
+        // Перебираем строчки (пропуская первую строчку-заголовок)
+        lines.slice(1).forEach((row, index) => {
+            if (row.length < 3) return;
+
+            // Очищаем данные от лишних кавычек Google
+            const name = row[1] ? row[1].replace(/"/g, '').trim() : 'Аноним';
+            const review = row[2] ? row[2].replace(/"/g, '').trim() : '';
+            const starsNum = row[3] ? parseInt(row[3].replace(/"/g, '')) : 5;
+            
+            // Если текст отзыва пустой, пропускаем строчку
+            if (!review) return;
+
+            const stars = '⭐'.repeat(isNaN(starsNum) ? 5 : starsNum);
+            const currentStyle = styles[index % styles.length];
+
+            // Формируем красивую пастельную карточку отзыва
+            const cardHTML = `
+                <div class="review-premium-card ${currentStyle}">
+                    <div class="review-header">
+                        <span class="review-avatar">👩‍👦</span>
+                        <div>
+                            <h5>${name}</h5>
+                            <div class="review-stars">${stars}</div>
+                        </div>
+                    </div>
+                    <p class="review-text">«${review}»</p>
+                </div>
+            `;
+
+            // Выводим карточку на страницу
+            containers.forEach(container => {
+                if (container) {
+                    container.innerHTML += cardHTML;
+                }
+            });
+        });
+
+    } catch (error) {
+        console.error('Не удалось загрузить отзывы:', error);
+    }
+}
+
+// Автоматический запуск считывания при открытии сайта
+document.addEventListener('DOMContentLoaded', loadLiveReviewsFromGoogle);
