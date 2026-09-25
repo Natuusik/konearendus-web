@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Развитие и Коррекция Речи | Таллинн</title>
+    <!-- Подключаем внешние стили -->
+    <link rel="stylesheet" href="style.css?v=2">
+    
+ <!-- Подключаем Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="script.js"></script>
+</head>
+
+
+
+<body>
+
+    <!-- Навигация -->
+    <!-- Навигация с мобильным бургером (Русская версия) -->
+    <header>
+        <nav class="nav-container">
+            <a href="#" class="logo">Kõnearendus / Развитие речи</a>
+            
+            <!-- Иконка бургера для мобильных -->
+            <div class="menu-burger" id="burgerToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links" id="navMenu">
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li><a href="#container">Отзывы</a></li>
+
+                <li class="lang-switch"><a href="index_ee.html"><strong>EST</strong></a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- Главный баннер -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Частные консультации по развитию и коррекции речи в Эстонии</h1>
+            <p>Помогаю детям и взрослым преодолеть речевые барьеры, улучшить дикцию и развить правильное звукопроизношение.</p>
+            <a href="#contact" class="cta-button">Записаться на встречу</a>
+        </div>
+    </section>
+
+    <!-- Дизайнерский блок О специалисте -->
+    <section id="about" class="about-section-premium">
+        <!-- Декоративные фоновые элементы для красоты -->
+        <div class="decor-blob blob-1"></div>
+        <div class="decor-blob blob-2"></div>
+
+        <div class="about-premium-container">
+            <!-- Левая колонка: Креативная рамка для фото -->
+            <div class="about-visual-box">
+                <div class="photo-frame-wrapper">
+                    <div class="photo-frame-accent"></div>
+                    <div class="premium-photo-placeholder">
+                        <span>👩‍🏫</span>
+                    </div>
+                </div>
+                <div class="floating-badge">
+                    <span class="badge-icon">✨</span>
+                    <span class="badge-text">Индивидуальный подход</span>
+                </div>
+            </div>
+
+            <!-- Правая колонка: Стильный контент -->
+            <div class="about-content-box">
+                <span class="section-subtitle-premium">Давайте знакомиться</span>
+                <h2 class="section-title-left">Раскрываю уверенность через правильную речь</h2>
+                
+                <p class="about-accent-lead">
+                    Приветствую! Меня зовут <strong>Татьяна</strong>. Я дипломированный специалист в области речевого развития, филологии и коммуникативных практик.
+                </p>
+                
+                <div class="about-text-narrative">
+                    <p>В Эстонии моя практика официально зарегистрирована как деятельность частного консультанта по развитию и исправлению речи (<em>kõnenõustaja</em>). Это значит, что каждый мой ученик — будь то малыш, который только учится выговаривать сложные звуки, или взрослый, желающий звучать уверенно на публичных выступлениях — получает бережное, профессиональное и законное сопровождение.</p>
+                    <p>Я категорически против скучного зазубривания. На моих занятиях дети играют, путешествуют по интерактивным мирам и незаметно для себя автоматизируют звуки, а взрослые осваивают легкие, но мощные техники артикуляционной и дыхательной гимнастики.</p>
+                </div>
+
+                <!-- Мини-счетчики преимуществ -->
+                <div class="about-mini-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">100%</span>
+                        <span class="stat-desc">Интерактивный материал</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">2</span>
+                        <span class="stat-desc">Языка обучения (RU / EE)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">0+</span>
+                        <span class="stat-desc">Стресса на занятиях</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Нижний ряд: Факты в виде оригинальных дизайнерских плашек -->
+        <div class="about-facts-premium-grid">
+            <div class="fact-premium-card card-edu">
+                <div class="fact-premium-icon">🎓</div>
+                <h4>Образование</h4>
+                <p>Высшее профильное филологическое образование и регулярные курсы повышения квалификации в сфере речевых технологий.</p>
+            </div>
+            
+            <div class="fact-premium-card card-soft">
+                <div class="fact-premium-icon">🧩</div>
+                <h4>Мягкий подход</h4>
+                <p>Никакого стресса и принуждения. Бережно адаптирую программу под темп, характер и интересы каждого ученика.</p>
+            </div>
+            
+            <div class="fact-premium-card card-lang">
+                <div class="fact-premium-icon">🌍</div>
+                <h4>Два языка</h4>
+                <p>Консультации и поддержка доступны как на русском, так и на эстонском языках (поддержка языковой среды).</p>
+            </div>
+        </div>
+    </section> <!-- ЗДЕСЬ СЕКЦИЯ ЗАКРЫТА ПРАВИЛЬНО -->
+
+    <!-- Обновленный оригинальный блок Услуг -->
+    <section id="services" class="services-premium-section">
+        <div class="section-wrapper">
+            <span class="section-subtitle-premium" style="text-align: center; display: block;">Чем я могу помочь</span>
+            <h2 class="section-title">Услуги и Направления</h2>
+            
+            <div class="services-premium-grid">
+                <!-- Карточка 1 -->
+                <div class="service-premium-card">
+                    <div class="service-num">01</div>
+                    <h3>Коррекция звукопроизношения</h3>
+                    <p>Постановка «трудных» звуков (Р, Л, шипящие), автоматизация их в повседневной речи и мягкое исправление дефектов дикции у детей от 4 лет.</p>
+                    <div class="price-tag">от 25 € / занятие</div>
+                </div>
+                
+                <!-- Карточка 2 -->
+                <div class="service-premium-card">
+                    <div class="service-num">02</div>
+                    <h3>Развитие связной речи</h3>
+                    <p>Обогащение словарного запаса, увлекательная работа над структурой предложений, подготовка к школе и преодоление языкового барьера.</p>
+                    <div class="price-tag">от 25 € / занятие</div>
+                </div>
+                
+                <!-- Карточка 3 -->
+                <div class="service-premium-card">
+                    <div class="service-num">03</div>
+                    <h3>Консультация для родителей</h3>
+                    <p>Анализ текущего речевого развития ребенка, подбор индивидуальных домашних упражнений и составление пошаговой карты развития.</p>
+                    <div class="price-tag">30 € / 45 мин</div>
+                </div>
+                
+                <!-- Карточка 4: Ссылка-карточка на Онлайн -->
+                <a href="online.html" target="_blank" class="service-premium-card card-online-link">
+                    <div class="service-num">04</div>
+                    <h3>Занятия онлайн <span class="open-premium-icon">↗</span></h3>
+                    <p>Эффективный дистанционный формат из любой точки Эстонии. Использую интерактивные платформы, яркие игры и цифровые материалы.</p>
+                    <div class="click-hint-premium">Нажмите, чтобы открыть подробности</div>
+                    <div class="price-tag">30 € / 45 мин</div>
+                </a>
+            </div>
+        </div>
+    </section>
+ 
+
+
+<div class="container">
+  <h2>Оставить отзыв</h2>
+
+  <!-- Форма отправки -->
+  <form id="review-form">
+    <input 
+      type="text" 
+      id="user-name" 
+      placeholder="Ваше имя" 
+      required 
+    />
+
+    <select id="user-rating" required>
+      <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+      <option value="4">⭐⭐⭐⭐ (4)</option>
+      <option value="3">⭐⭐⭐ (3)</option>
+      <option value="2">⭐⭐ (2)</option>
+      <option value="1">⭐ (1)</option>
+    </select>
+
+    <textarea 
+      id="user-review" 
+      placeholder="Ваш отзыв..." 
+      rows="4" 
+      required
+    ></textarea>
+
+    <button type="submit" id="submit-btn">Отправить отзыв</button>
+  </form>
+
+  <h2>Все отзывы</h2>
+  
+  <!-- Место для отображения отзывов -->
+  <div id="reviews-container">
+    <p>Загрузка отзывов...</p>
+  </div>
+</div>
+      
+          
+    </section>
+
+
+    <!-- Контакты -->
+    <section id="contact">
+        <h2 class="section-title">Запись на консультацию</h2>
+        <div class="contact-container">
+            <form id="speechForm">
+                <div class="form-group">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" id="name" required placeholder="Иван Иванов">
+                </div>
+                <div class="form-group">
+                    <label for="email">Телефон или Email:</label>
+                    <input type="text" id="email" required placeholder="+372 ... / email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Описание ситуации (возраст, какие трудности):</label>
+                    <textarea id="message" placeholder="Например: Ребенку 5 лет, не выговаривает букву Р..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Отправить заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Развитие речи и консультации (Kõnearendus). Таллинн, Эстония.</p>
+        <p class="legal-notice">Деятельность носит консультативно-развивающий характер.</p>
+    </footer>
+
+    <!-- Подключаем внешний скрипт логики -->
+<script src="script.js?v=999"></script>
+
+</body>
+</html>

@@ -1,0 +1,1109 @@
+/* ==========================================
+   1. ОБЩИЕ СТИЛИ, ПЕРЕМЕННЫЕ И СБРОС (RESET)
+   ========================================== */
+:root {
+    --primary-color: #7fb5b5;     /* Мягкий бирюзовый (основной) */
+    --primary-hover: #6aa3a3;     /* Бирюзовый чуть темнее (для ховеров) */
+    --secondary-color: #f7d6c8;   /* Пастельный персиковый */
+    --dark-title: #2c3e50;        /* Глубокий сине-серый для заголовков */
+    --text-color: #333333;        /* Основной текст */
+    --bg-color: #faf8f5;          /* Теплый пастельный фон сайта */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   2. ШАПКА И НАВИГАЦИЯ (HEADER & NAV)
+   ========================================== */
+header {
+    background-color: #ffffff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* ==========================================
+   3. ГЛАВНЫЙ БАННЕР (HERO SECTION)
+   ========================================== */
+.hero {
+    padding: 140px 20px 80px;
+    background: linear-gradient(135deg, #eef7f7 0%, #fef6f2 100%);
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--dark-title);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #666666;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    background-color: var(--primary-hover);
+    box-shadow: 0 5px 15px rgba(127, 181, 181, 0.3);
+}
+
+/* ==========================================
+   4. ОБЩИЕ СТИЛИ ДЛЯ ВСЕХ СЕКЦИЙ И ЗАГОЛОВКОВ
+   ========================================== */
+section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    position: relative;
+    color: var(--dark-title);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    margin: 10px auto 0;
+}
+
+/* ==========================================
+   5. СЕКЦИЯ УСЛУГ (SERVICES)
+   ========================================== */
+/* Растягиваем фон на всю ширину экрана для больших мониторов */
+.services-section {
+    background-color: #f0f4f4;
+    max-width: 100%; 
+    padding: 80px 0;
+}
+
+/* Центрируем сетку карточек внутри секции */
+.services-section .services-grid,
+.services-section .section-title {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+    border-top: 4px solid var(--primary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    color: var(--dark-title);
+    font-size: 1.3rem;
+}
+
+.service-card p {
+    color: #666666;
+    font-size: 0.95rem;
+}
+
+.price {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 15px;
+    font-size: 1.1rem;
+}
+
+/* ==========================================
+   6. ФОРМА ОБРАТНОЙ СВЯЗИ (CONTACT FORM)
+   ========================================== */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 500;
+    color: var(--dark-title);
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Красивая подсветка полей при клике */
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(127, 181, 181, 0.15);
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 5px 15px rgba(127, 181, 181, 0.2);
+}
+
+/* ==========================================
+   7. ФУТЕР САЙТА (FOOTER)
+   ========================================== */
+footer {
+    background-color: var(--dark-title);
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+    font-size: 0.9rem;
+}
+
+.legal-notice {
+    font-size: 0.8rem;
+    margin-top: 8px;
+    color: #a0aec0;
+}
+
+/* ==========================================
+   8. СТИЛИ ДЛЯ ИНТЕРАКТИВНОЙ КАРТОЧКИ-ССЫЛКИ
+   (На главной странице в блоке услуг)
+   ========================================== */
+.service-card-link {
+    text-decoration: none; /* Убираем стандартное подчеркивание ссылки */
+    color: inherit;         /* Карточка наследует основной цвет текста */
+    display: block;
+}
+
+.open-icon {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-left: 5px;
+}
+
+.click-hint {
+    font-size: 0.8rem;
+    color: #999999;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* ==========================================
+   9. ОБЩАЯ МЕДИА-АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ
+   ========================================== */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Скрываем стандартные ссылки на мобильных */
+    }
+    
+    .hero {
+        padding: 120px 20px 60px;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+/* ==========================================
+   10. ПРЕМИАЛЬНЫЙ ДИЗАЙН "О СПЕЦИАЛИСТЕ" (ИНДЕКС)
+   ========================================== */
+.about-section-premium {
+    position: relative;
+    padding: 100px 20px;
+    background-color: #ffffff;
+    overflow: hidden; /* Скрывает выходящие за рамки декоративные круги */
+}
+
+/* Декоративные плавные пятна на фоне */
+.decor-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.blob-1 {
+    width: 300px;
+    height: 300px;
+    background-color: #eef7f7;
+    top: -50px;
+    left: -100px;
+}
+
+.blob-2 {
+    width: 250px;
+    height: 250px;
+    background-color: #fff2ec;
+    bottom: -50px;
+    right: -50px;
+}
+
+.about-premium-container {
+    position: relative;
+    z-index: 2; /* Поднимаем контент над фоновыми пятнами */
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Визуальный бокс с эффектом наложения слоев */
+.about-visual-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-frame-wrapper {
+    position: relative;
+    width: 300px;
+    height: 360px;
+}
+
+/* Смещенная дизайнерская рамка на заднем плане */
+.photo-frame-accent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--primary-color);
+    border-radius: 24px;
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+}
+
+/* Сама карточка для фотографии */
+.premium-photo-placeholder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f7d6c8 0%, #eef7f7 100%);
+    border-radius: 24px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.premium-photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   11. КРАСОЧНЫЕ СЕКЦИИ СТРАНИЦЫ ОНЛАЙН (ONLINE)
+   ========================================== */
+.online-page-body {
+    background-color: #f4f7f6; /* Мягкий светлый фон для контраста карточек */
+    padding: 110px 15px 40px 15px;
+}
+
+.online-mobile-container {
+    max-width: 650px; /* Ограничиваем ширину для эффекта мобильного экрана на ПК */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Общие стили для всех карточек-блоков */
+.mobile-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 25px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    border-left: 6px solid #cccccc; /* Базовая цветная полоса слева */
+    transition: transform 0.2s ease;
+}
+
+.mobile-card:hover {
+    transform: translateY(-2px);
+}
+
+.mobile-card h2 {
+    font-size: 1.4rem;
+    color: var(--dark-title);
+    margin-bottom: 15px;
+}
+
+.mobile-card p {
+    color: #4a5568;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Индивидуальные пастельные маркеры для блоков */
+.card-hero { border-left-color: var(--primary-color); text-align: center; }
+.card-hero h1 { font-size: 1.8rem; color: var(--dark-title); margin: 10px 0; }
+.card-hero .badge { background: var(--secondary-color); padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; }
+
+.card-cyan { border-left-color: #7ec8ca; background: #fbfeff; }
+.card-peach { border-left-color: #fbcbbb; background: #fffbfa; }
+.card-mint { border-left-color: #a1dbb8; background: #fafffb; }
+.card-lavender { border-left-color: #c3bbf2; background: #faf9ff; }
+.card-yellow { border-left-color: #fbe3b5; background: #fffff9; }
+.card-contact { border-left-color: #3b82f6; background: #f8fafc; }
+
+/* Списки с эмодзи-иконками */
+.bullet-list {
+    list-style: none;
+}
+
+.bullet-list li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #4a5568;
+}
+
+/* Стиль для списка по минутам */
+.timeline-list {
+    padding-left: 15px;
+    color: #4a5568;
+}
+
+.timeline-list li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+/* Кнопка возврата и контакты */
+.direct-contacts {
+    margin: 15px 0;
+    background: #edf2f7;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.direct-contacts a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-btn-blue {
+    display: block;
+    text-align: center;
+    background-color: #3b82f6;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.back-btn-blue:hover {
+    background-color: #2563eb;
+}
+
+/* ==========================================
+   12. ДЕТАЛИ КОНТЕНТА "О СПЕЦИАЛИСТЕ" (ИНДЕКС)
+   ========================================== */
+.floating-badge {
+    position: absolute;
+    bottom: 30px;
+    left: -20px;
+    background: #ffffff;
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 3;
+}
+
+.badge-icon {
+    font-size: 1.2rem;
+    background: #eef7f7;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.badge-text {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--dark-title);
+    white-space: nowrap;
+}
+
+.section-subtitle-premium {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.section-title-left {
+    font-size: 2.2rem;
+    color: var(--dark-title);
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.about-accent-lead {
+    font-size: 1.15rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--secondary-color);
+    padding-left: 15px;
+}
+
+.about-text-narrative p {
+    color: #555555;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Настольные счетчики преимуществ */
+.about-mini-stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #eeeeee;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-num {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.stat-desc {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 2px;
+    line-height: 1.3;
+}
+
+
+
+/* ==========================================
+   14. ОРИГИНАЛЬНЫЕ КАРТОЧКИ ФАКТОВ ВНИЗУ "О МНЕ"
+   ========================================== */
+.about-facts-premium-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+    padding: 0 10px; /* Защита от прилипания к краям */
+}
+
+.fact-premium-card {
+    background: #ffffff;
+    padding: 35px 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+/* Эффект парящих цветных теней при наведении */
+.fact-premium-card:hover {
+    transform: translateY(-5px);
+    background: #ffffff;
+}
+.card-edu:hover { box-shadow: 0 15px 35px rgba(127, 181, 181, 0.2); border-color: var(--primary-color); }
+.card-soft:hover { box-shadow: 0 15px 35px rgba(247, 214, 200, 0.4); border-color: var(--secondary-color); }
+.card-lang:hover { box-shadow: 0 15px 35px rgba(126, 200, 202, 0.2); border-color: #7ec8ca; }
+
+.fact-premium-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.fact-premium-card h4 {
+    font-size: 1.25rem;
+    color: var(--dark-title);
+    margin-bottom: 12px;
+}
+
+.fact-premium-card p {
+    font-size: 0.95rem;
+    color: #5d6b76;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   15. ПРЕМИАЛЬНАЯ СЕКЦИЯ УСЛУГ (SERVICES PREMIUM)
+   ========================================== */
+.services-premium-section {
+    background: linear-gradient(180deg, #ffffff 0%, #f4f7f6 100%);
+    padding: 100px 20px;
+    max-width: 100%;
+}
+
+.section-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.services-premium-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(48%, 1fr)); /* Две колонки на ПК */
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.service-premium-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+/* Шахматный эффект: делаем четные карточки слегка смещенными по фону или стилю */
+.services-premium-grid .service-premium-card:nth-child(even) {
+    background: #fafcfc;
+}
+
+.service-premium-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    background: #ffffff;
+}
+
+/* Красивые большие цифры на фоне карточек */
+.service-num {
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    font-size: 5.5rem;
+    font-weight: 900;
+    color: rgba(127, 181, 181, 0.06);
+    user-select: none;
+    font-family: Arial, sans-serif;
+}
+
+.service-premium-card h3 {
+    font-size: 1.4rem;
+    color: var(--dark-title);
+    margin-bottom: 15px;
+    padding-right: 40px; /* Чтобы текст не заходил под цифру */
+}
+
+.service-premium-card p {
+    color: #626e7a;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.price-tag {
+    align-self: flex-start;
+    background: #eef7f7;
+    color: #4a8b8b;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+/* Карточка-ссылка для Онлайн занятий */
+.card-online-link {
+    text-decoration: none;
+    border: 2px dashed var(--primary-color);
+    background: #ffffff !important;
+}
+
+.card-online-link:hover {
+    border-style: solid;
+    background: #fbfefe !important;
+}
+
+.open-premium-icon {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.click-hint-premium {
+    font-size: 0.8rem;
+    color: #9aa7b3;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+/* Выделение переключателя языков */
+.lang-switch a {
+    color: var(--primary-color) !important;
+    border: 1px solid var(--primary-color);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.lang-switch a:hover {
+    background-color: var(--primary-color);
+    color: #ffffff !important;
+}
+
+/* ==========================================
+   16. МЕДИА-АДАПТИВНОСТЬ ДЛЯ УСЛУГ
+   ========================================== */
+@media (max-width: 850px) {
+    .services-premium-grid {
+        grid-template-columns: 1fr; /* На планшетах и телефонах карточки встают в одну колонку */
+        gap: 20px;
+    }
+    
+    .service-premium-card {
+        padding: 30px 25px;
+    }
+}
+
+/* ==========================================
+   13. ПОДРОБНАЯ МЕДИА-АДАПТИВНОСТЬ (ПЛАНШЕТЫ И СМАРТФОНЫ)
+   ========================================== */
+
+/* Экраны планшетов (до 900px) */
+@media (max-width: 900px) {
+    .about-premium-container {
+        grid-template-columns: 1fr; /* Перестраиваем блок обо мне в одну колонку */
+        gap: 50px;
+    }
+    
+    .about-visual-box {
+        margin-bottom: 20px;
+    }
+    
+    .section-title-left {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    
+    .section-subtitle-premium {
+        display: block;
+        text-align: center;
+    }
+    
+    .about-mini-stats {
+        justify-content: space-around;
+        text-align: center;
+    }
+}
+
+/* Маленькие экраны телефонов (до 480px) */
+@media (max-width: 480px) {
+    .photo-frame-wrapper {
+        width: 260px;
+        height: 310px;
+    }
+    
+    .floating-badge {
+        left: 10px;
+        bottom: -10px;
+    }
+    
+    .about-mini-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Оптимизация карточек со скриншотов */
+    .mobile-card { 
+        padding: 20px 15px; 
+    }
+    
+    .mobile-card h2 { 
+        font-size: 1.25rem; 
+    }
+    
+    .card-hero h1 { 
+        font-size: 1.5rem; 
+    }
+}
+/* ==========================================
+   17. АНИМАЦИОННОЕ МОБИЛЬНОЕ МЕНЮ БУРГЕР
+   ========================================== */
+.menu-burger {
+    display: none; /* На компьютерах бургер скрыт */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.menu-burger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--dark-title);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Анимация превращения трех полосок в крестик (класс active добавит JS) */
+.menu-burger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: var(--primary-color);
+}
+
+.menu-burger.active span:nth-child(2) {
+    opacity: 0; /* Средняя полоска исчезает */
+}
+
+.menu-burger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: var(--primary-color);
+}
+
+/* Стили меню для мобильных экранов */
+@media (max-width: 768px) {
+    .menu-burger {
+        display: flex; /* Показываем бургер на телефонах */
+    }
+
+    .nav-links {
+        display: flex; /* Перебиваем старое скрытие display:none */
+        position: fixed;
+        top: -100%; /* Меню изначально спрятано над экраном */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        padding: 40px 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 999;
+    }
+
+    /* Класс для плавного выезда меню сверху вниз */
+    .nav-links.open {
+        top: 70px; /* Опускается ровно под шапку */
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+}
+/* ==========================================
+   18. СТИЛЬНЫЙ ПРЕМИУМ-БЛОК ОТЗЫВОВ
+   ========================================== */
+.reviews-premium-section {
+    background: #ffffff;
+    padding: 100px 20px;
+    max-width: 100%;
+}
+
+.reviews-premium-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.review-premium-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review-premium-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Разные нежные пастельные фоны для оригинальности */
+.review-mint { background-color: #f6fbf9; border-top: 4px solid #a1dbb8; }
+.review-peach { background-color: #fffbfa; border-top: 4px solid #fbcbbb; }
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.review-avatar {
+    font-size: 2rem;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.review-header h5 {
+    font-size: 1.05rem;
+    color: var(--dark-title);
+    margin-bottom: 2px;
+}
+
+.review-stars {
+    font-size: 0.85rem;
+}
+
+.review-text {
+    font-size: 0.95rem;
+    color: #5d6b76;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.leave-review-box {
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px;
+    background-color: var(--bg-color);
+    border-radius: 20px;
+}
+
+.leave-review-box p {
+    margin-bottom: 15px;
+    color: #5d6b76;
+    font-weight: 500;
+}
+
+.review-btn {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.review-btn:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+/* Дополнительные пастельные цвета для новых отзывов */
+.review-cyan { background-color: #f2fafa; border-top: 4px solid #7ec8ca; }
+.review-lavender { background-color: #f7f6ff; border-top: 4px solid #c3bbf2; }
+
+/* Изначально скрываем блок с глубокими отзывами */
+.hidden-reviews-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Класс, который JS добавит для раскрытия блока */
+.hidden-reviews-wrapper.show {
+    max-height: 1500px; /* Запас высоты, чтобы поместились все новые отзывы */
+}
+
+/* Стили для кнопок-переключателей */
+#toggleReviewsBtn, #toggleReviewsBtnEE {
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 10px 25px;
+    border-radius: 20px;
+}
+.container {
+  max-width: 600px;
+  margin: 30px auto;
+  font-family: sans-serif;
+  padding: 0 15px;
+}
+
+#review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 30px;
+}
+
+#review-form input,
+#review-form select,
+#review-form textarea {
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+#review-form button {
+  padding: 12px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#review-form button:hover {
+  background-color: #2563eb;
+}
+
+#review-form button:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.review-card {
+  background: white;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
