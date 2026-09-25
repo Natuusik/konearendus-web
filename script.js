@@ -1,9 +1,9 @@
 
 // === НАСТРОЙКА ПОДКЛЮЧЕНИЯ К SUPABASE ===
-const SUPABASE_URL = 'https://vuppdvlpsbyzhcmalhoi.supabase.co'; 
-const SUPABASE_ANON_KEY = 'sb_publishable_frIjzGAOaW77jegazxN-_Q_OUqN-hzO';
+// === const SUPABASE_URL = 'https://vuppdvlpsbyzhcmalhoi.supabase.co'; 
+//const SUPABASE_ANON_KEY = 'sb_publishable_frIjzGAOaW77jegazxN-_Q_OUqN-hzO';
 // Инициализируем подключение к базе данных
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+//const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ==========================================
 // 1. ПЛАВНАЯ ПРОКРУТКА ДЛЯ ССЫЛОК-ЯКОРЕЙ
