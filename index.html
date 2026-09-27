@@ -171,16 +171,14 @@
  
 
 
-<form action="https://web3forms.com" method="POST" id="review-form">
+<form id="review-form">
   <!-- Ваш рабочий ключ доступа -->
   <input type="hidden" name="access_key" value="b866de9c-4617-4f27-a4b9-9dc2a6825971">
 
-  <!-- Страница, на которую перейдет пользователь после успешного отзыва -->
-  <input type="hidden" name="redirect" value="https://web3forms.com">
-
-  <!-- Атрибуты name обязательны для передачи данных -->
+  <!-- ВАЖНО: name="name" для имени -->
   <input type="text" name="name" id="user-name" placeholder="Ваше имя" required />
 
+  <!-- ВАЖНО: name="rating" для оценки -->
   <select name="rating" id="user-rating" required>
     <option value="5">⭐⭐⭐⭐⭐ (5)</option>
     <option value="4">⭐⭐⭐⭐ (4)</option>
@@ -189,11 +187,14 @@
     <option value="1">⭐ (1)</option>
   </select>
 
+  <!-- ВАЖНО: name="message" для самого текста отзыва -->
   <textarea name="message" id="user-review" placeholder="Ваш отзыв..." rows="4" required></textarea>
 
   <button type="submit" id="submit-btn">Отправить отзыв</button>
 </form>
 
+<!-- Сюда скрипт будет выводить надпись "Ваш отзыв обрабатывается..." -->
+<div id="form-status" style="margin-top: 15px; font-weight: bold; display: none;"></div>
 
     <!-- Контакты -->
     <section id="contact">
