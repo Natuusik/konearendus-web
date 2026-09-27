@@ -1,3 +1,48 @@
+document.getElementById('review-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Отменяем перезагрузку страницы
+
+  const form = event.target;
+  const btn = document.getElementById('submit-btn');
+  const statusDiv = document.getElementById('form-status');
+
+  // Клиент сразу видит статус обработки
+  btn.disabled = true;
+  statusDiv.style.display = 'block';
+  statusDiv.style.color = '#333';
+  statusDiv.innerHTML = 'Ваш отзыв обрабатывается и отправляется на модерацию...';
+
+  // Собираем данные формы и пакуем в JSON для Web3Forms
+  const formData = new FormData(form);
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
+
+  fetch('https://web3forms.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: json
+  })
+  .then(async (response) => {
+    const result = await response.json();
+    if (response.ok && result.success) {
+      statusDiv.style.color = 'green';
+      statusDiv.innerHTML = 'Спасибо! Ваш отзыв успешно отправлен и появится на сайте после проверки.';
+      form.reset(); // Очищаем форму
+    } else {
+      statusDiv.style.color = 'red';
+      statusDiv.innerHTML = result.message || 'Произошла ошибка при отправке.';
+    }
+  })
+  .catch(error => {
+    statusDiv.style.color = 'red';
+    statusDiv.innerHTML = 'Произошла сетевая ошибка. Пожалуйста, попробуйте позже.';
+  })
+  .finally(() => {
+    btn.disabled = false; // Возвращаем кнопку в рабочее состояние
+  });
+});
 
 // ==========================================
 // 1. ПЛАВНАЯ ПРОКРУТКА ДЛЯ ССЫЛОК-ЯКОРЕЙ
