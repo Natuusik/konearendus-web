@@ -1,21 +1,24 @@
 document.getElementById('review-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Отменяем перезагрузку страницы
+  event.preventDefault(); // Стопим перезагрузку страницы
 
   const form = event.target;
   const btn = document.getElementById('submit-btn');
   const statusDiv = document.getElementById('form-status');
 
-  // Клиент сразу видит статус обработки
+  // 1. Показываем клиенту, что процесс пошел
   btn.disabled = true;
   statusDiv.style.display = 'block';
   statusDiv.style.color = '#333';
   statusDiv.innerHTML = 'Ваш отзыв обрабатывается и отправляется на модерацию...';
 
-  // Собираем данные формы и пакуем в JSON для Web3Forms
+  // 2. Собираем все данные из полей HTML формы
   const formData = new FormData(form);
+
+  // 3. Переводим данные в формат JSON (без этого Web3Forms выдаст ошибку)
   const object = Object.fromEntries(formData);
   const json = JSON.stringify(object);
 
+  // 4. Отправляем данные на сервера Web3Forms
   fetch('https://web3forms.com', {
     method: 'POST',
     headers: {
@@ -26,23 +29,29 @@ document.getElementById('review-form').addEventListener('submit', function(event
   })
   .then(async (response) => {
     const result = await response.json();
+    
     if (response.ok && result.success) {
+      // Если всё улетело успешно — красим текст в зеленый
       statusDiv.style.color = 'green';
       statusDiv.innerHTML = 'Спасибо! Ваш отзыв успешно отправлен и появится на сайте после проверки.';
-      form.reset(); // Очищаем форму
+      form.reset(); // Очищаем форму для следующего отзыва
     } else {
+      // Если сервис вернул ошибку (например, ключ не подошел)
       statusDiv.style.color = 'red';
       statusDiv.innerHTML = result.message || 'Произошла ошибка при отправке.';
     }
   })
   .catch(error => {
+    // Если упал сам интернет или заблокировал браузер локально
     statusDiv.style.color = 'red';
     statusDiv.innerHTML = 'Произошла сетевая ошибка. Пожалуйста, попробуйте позже.';
   })
   .finally(() => {
-    btn.disabled = false; // Возвращаем кнопку в рабочее состояние
+    // В любом случае возвращаем кнопку в рабочее состояние
+    btn.disabled = false;
   });
 });
+
 
 // ==========================================
 // 1. ПЛАВНАЯ ПРОКРУТКА ДЛЯ ССЫЛОК-ЯКОРЕЙ
