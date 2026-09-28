@@ -171,30 +171,63 @@
  
 
 
-<form id="review-form">
-  <!-- Ваш рабочий ключ доступа -->
-  <input type="hidden" name="access_key" value="b866de9c-4617-4f27-a4b9-9dc2a6825971">
+<!-- Блок отзывов на главной странице -->
+<section class="reviews-section">
+  <h2>Отзывы</h2>
 
-  <!-- ВАЖНО: name="name" для имени -->
-  <input type="text" name="name" id="user-name" placeholder="Ваше имя" required />
+  <!-- Ссылка-кнопка "Оставить отзыв" -->
+  <div class="reviews-actions">
+    <a href="https://natuusik.github.io/telegram-tutor-bot/" target="_blank" rel="noopener noreferrer" class="btn-review">
+      Оставить отзыв
+    </a>
+  </div>
 
-  <!-- ВАЖНО: name="rating" для оценки -->
-  <select name="rating" id="user-rating" required>
-    <option value="5">⭐⭐⭐⭐⭐ (5)</option>
-    <option value="4">⭐⭐⭐⭐ (4)</option>
-    <option value="3">⭐⭐⭐ (3)</option>
-    <option value="2">⭐⭐ (2)</option>
-    <option value="1">⭐ (1)</option>
-  </select>
+  <!-- Видимые отзывы на главной (по умолчанию показываются только первые 2) -->
+  <div class="reviews-container">
+    
+    <!-- Отзыв 1 -->
+    <div class="review-card">
+      <div class="review-header">
+        <span class="review-author">Анна</span>
+        <span class="review-rating">★★★★★</span>
+      </div>
+      <p class="review-text">Отличный бот! Очень помогает в учебе и экономит время.</p>
+    </div>
 
-  <!-- ВАЖНО: name="message" для самого текста отзыва -->
-  <textarea name="message" id="user-review" placeholder="Ваш отзыв..." rows="4" required></textarea>
+    <!-- Отзыв 2 -->
+    <div class="review-card">
+      <div class="review-header">
+        <span class="review-author">Максим</span>
+        <span class="review-rating">★★★★★</span>
+      </div>
+      <p class="review-text">Удобный интерфейс, всё понятно и доступно.</p>
+    </div>
 
-  <button type="submit" id="submit-btn">Отправить отзыв</button>
-</form>
+    <!-- Дополнительные отзывы (скрытые по умолчанию) -->
+    <div class="review-card extra-review hidden">
+      <div class="review-header">
+        <span class="review-author">Елена</span>
+        <span class="review-rating">★★★★★</span>
+      </div>
+      <p class="review-text">Занимаемся уже месяц, результаты супер!</p>
+    </div>
 
-<!-- Сюда скрипт будет выводить надпись "Ваш отзыв обрабатывается..." -->
-<div id="form-status" style="margin-top: 15px; font-weight: bold; display: none;"></div>
+    <div class="review-card extra-review hidden">
+      <div class="review-header">
+        <span class="review-author">Дмитрий</span>
+        <span class="review-rating">★★★★☆</span>
+      </div>
+      <p class="review-text">Хороший сервис, рекомендую друзьям.</p>
+    </div>
+
+  </div>
+
+  <!-- Кнопка разворачивания/сворачивания списков -->
+  <div class="more-reviews-wrapper">
+    <button id="toggle-reviews-btn" class="btn-more">Посмотреть все отзывы</button>
+  </div>
+</section>
+
 
     <!-- Контакты -->
     <section id="contact">
