@@ -197,132 +197,90 @@ section {
 
 /* ==========================================
    6. ФОРМА ОБРАТНОЙ СВЯЗИ (CONTACT FORM)
-   ========================================== /* Секция контактов */
-.contact-section {
-    max-width: 800px;
+   ========================================== /* Блок формы на главной странице */
+.simple-contact-section {
+    max-width: 600px;
     margin: 40px auto;
-    padding: 20px;
-    text-align: center;
+    padding: 0 20px;
     font-family: system-ui, -apple-system, sans-serif;
 }
 
-.contact-actions {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
+.simple-contact-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.simple-contact-card h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #2d3748;
+    font-size: 24px;
+    text-align: center;
+}
+
+.simple-contact-card p {
+    margin-top: 0;
     margin-bottom: 24px;
+    color: #718096;
+    font-size: 14px;
+    text-align: center;
 }
 
-/* Кнопка Telegram */
-.btn-telegram {
-    display: inline-block;
-    background-color: #2481cc;
-    color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
-}
-
-.btn-telegram:hover {
-    background-color: #1c6ba8;
-}
-
-/* Кнопка открытия/закрытия формы */
-.btn-toggle-form {
-    background: transparent;
-    border: 2px solid #2481cc;
-    color: #2481cc;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.2s ease;
-}
-
-.btn-toggle-form:hover {
-    background-color: #2481cc;
-    color: #ffffff;
-}
-
-/* Обёртка формы и скрытие */
-.contact-form-wrapper {
-    margin-top: 20px;
-    text-align: left;
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    padding: 24px;
-    border-radius: 12px;
-}
-
-.contact-form-wrapper.hidden {
-    display: none;
-}
-
-/* Элементы формы */
-.speech-form .form-group {
+.simple-form .form-group {
     margin-bottom: 16px;
 }
 
-.speech-form label {
+.simple-form label {
     display: block;
+    font-size: 14px;
     font-weight: 600;
     margin-bottom: 6px;
-    color: #333;
+    color: #4a5568;
 }
 
-.speech-form input[type="text"],
-.speech-form textarea {
+.simple-form input[type="text"],
+.simple-form input[type="email"],
+.simple-form textarea {
     width: 100%;
     padding: 10px 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 15px;
+    transition: border-color 0.2s;
 }
 
-.speech-form textarea {
-    min-height: 100px;
+.simple-form input:focus,
+.simple-form textarea:focus {
+    outline: none;
+    border-color: #2481cc;
+}
+
+.simple-form textarea {
     resize: vertical;
 }
 
-.speech-form .submit-btn {
+.simple-form .submit-btn {
     width: 100%;
-    background-color: #28a745;
-    color: white;
+    background-color: #2481cc;
+    color: #ffffff;
     border: none;
     padding: 12px;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    margin-top: 8px;
 }
 
-.speech-form .submit-btn:hover {
-    background-color: #218838;
+.simple-form .submit-btn:hover {
+    background-color: #1c6ba8;
 }
  ==========================================
-   7. ФУТЕР САЙТА (FOOTER)
-   ========================================== */
-footer {
-    background-color: var(--dark-title);
-    color: #ffffff;
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 60px;
-    font-size: 0.9rem;
-}
-
-.legal-notice {
-    font-size: 0.8rem;
-    margin-top: 8px;
-    color: #a0aec0;
-}
-
-/* ==========================================
    8. СТИЛИ ДЛЯ ИНТЕРАКТИВНОЙ КАРТОЧКИ-ССЫЛКИ
    (На главной странице в блоке услуг)
    ========================================== */
