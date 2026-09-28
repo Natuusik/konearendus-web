@@ -934,176 +934,90 @@ footer {
 }
 /* ==========================================
    18. СТИЛЬНЫЙ ПРЕМИУМ-БЛОК ОТЗЫВОВ
-   ========================================== */
-.reviews-premium-section {
-    background: #ffffff;
-    padding: 100px 20px;
-    max-width: 100%;
+   ========================================== /* Стили секции отзывов */
+.reviews-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
-.reviews-premium-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+/* Кнопка "Оставить отзыв" */
+.btn-review {
+  display: inline-block;
+  background-color: #2481cc; /* Цвет в стиле Telegram */
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 24px;
+  transition: background-color 0.2s ease;
 }
 
-.review-premium-card {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(0, 0, 0, 0.03);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.btn-review:hover {
+  background-color: #1c6ba8;
 }
 
-.review-premium-card:hover {
-    transform: translateY(-3px);
-}
-
-/* Разные нежные пастельные фоны для оригинальности */
-.review-mint { background-color: #f6fbf9; border-top: 4px solid #a1dbb8; }
-.review-peach { background-color: #fffbfa; border-top: 4px solid #fbcbbb; }
-
-.review-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.review-avatar {
-    font-size: 2rem;
-    background: #ffffff;
-    padding: 8px;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-}
-
-.review-header h5 {
-    font-size: 1.05rem;
-    color: var(--dark-title);
-    margin-bottom: 2px;
-}
-
-.review-stars {
-    font-size: 0.85rem;
-}
-
-.review-text {
-    font-size: 0.95rem;
-    color: #5d6b76;
-    line-height: 1.6;
-    font-style: italic;
-}
-
-.leave-review-box {
-    text-align: center;
-    margin-top: 50px;
-    padding: 30px;
-    background-color: var(--bg-color);
-    border-radius: 20px;
-}
-
-.leave-review-box p {
-    margin-bottom: 15px;
-    color: #5d6b76;
-    font-weight: 500;
-}
-
-.review-btn {
-    background-color: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-}
-
-.review-btn:hover {
-    background-color: var(--primary-color);
-    color: #ffffff;
-}
-/* Дополнительные пастельные цвета для новых отзывов */
-.review-cyan { background-color: #f2fafa; border-top: 4px solid #7ec8ca; }
-.review-lavender { background-color: #f7f6ff; border-top: 4px solid #c3bbf2; }
-
-/* Изначально скрываем блок с глубокими отзывами */
-.hidden-reviews-wrapper {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Класс, который JS добавит для раскрытия блока */
-.hidden-reviews-wrapper.show {
-    max-height: 1500px; /* Запас высоты, чтобы поместились все новые отзывы */
-}
-
-/* Стили для кнопок-переключателей */
-#toggleReviewsBtn, #toggleReviewsBtnEE {
-    cursor: pointer;
-    font-size: 0.95rem;
-    padding: 10px 25px;
-    border-radius: 20px;
-}
-.container {
-  max-width: 600px;
-  margin: 30px auto;
-  font-family: sans-serif;
-  padding: 0 15px;
-}
-
-#review-form {
+/* Карточка отзыва */
+.reviews-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  background-color: #f8fafc;
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  margin-bottom: 30px;
-}
-
-#review-form input,
-#review-form select,
-#review-form textarea {
-  padding: 10px 14px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 14px;
-}
-
-#review-form button {
-  padding: 12px;
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-#review-form button:hover {
-  background-color: #2563eb;
-}
-
-#review-form button:disabled {
-  background-color: #94a3b8;
-  cursor: not-allowed;
+  gap: 16px;
 }
 
 .review-card {
-  background: white;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 12px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .review-header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
+}
+
+.review-author {
+  font-weight: bold;
+  color: #333;
+}
+
+.review-rating {
+  color: #ffb400;
+}
+
+.review-text {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Скрытие дополнительных отзывов */
+.extra-review.hidden {
+  display: none;
+}
+
+/* Кнопка "Посмотреть все отзывы" */
+.more-reviews-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-more {
+  background: transparent;
+  border: 1px solid #2481cc;
+  color: #2481cc;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-more:hover {
+  background-color: #2481cc;
+  color: #fff;
 }
