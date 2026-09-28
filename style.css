@@ -908,16 +908,17 @@ section {
     color: #ffffff;
 }
 
-/* ==========================================
-   16. МИНМАЛИСТИЧНЫЙ ФУТЕР
+/* /* ==========================================
+   16. ДЕТСКИЙ ПРЕМИУМ-ФУТЕР (ТЕПЛЫЙ И ДРУЖЕЛЮБНЫЙ)
    ========================================== */
 .footer-minimal {
-    background: #1e293b;
-    color: #94a3b8;
-    padding: 25px 0;
+    position: relative;
+    background: linear-gradient(180deg, #f0f7f7 0%, #e5f1f1 100%);
+    color: #4a5568;
+    padding: 50px 0 30px 0;
     margin-top: 80px;
-    font-size: 0.9rem;
-    border-top: 1px solid #334155;
+    font-size: 0.95rem;
+    border-top: 3px solid var(--secondary-color);
 }
 
 .footer-minimal .footer-container {
@@ -928,33 +929,105 @@ section {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 20px;
+}
+
+/* Блок с лого/названием и описанием */
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: var(--dark-title);
+}
+
+.footer-brand-icon {
+    font-size: 1.3rem;
+    background: #ffffff;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .footer-minimal em {
-    color: #cbd5e1;
-    font-style: italic;
+    color: var(--primary-color);
+    font-style: normal;
+    font-weight: 600;
 }
 
+/* Ссылки и контакты */
 .footer-minimal .footer-contacts {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
+    background: #ffffff;
+    padding: 8px 18px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .footer-minimal a {
-    color: #cbd5e1;
+    color: #3b82f6;
     text-decoration: none;
+    font-weight: 600;
     transition: color 0.2s ease;
 }
 
 .footer-minimal a:hover {
-    color: #38bdf8;
+    color: #1d4ed8;
+    text-decoration: underline;
 }
 
 .footer-minimal .sep {
-    color: #475569;
+    color: #cbd5e1;
 }
+
+/* Копирайт внизу */
+.footer-bottom-text {
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 0.85rem;
+    color: #718096;
+}
+
+/* Мобильная адаптация для детского футера */
+@media (max-width: 768px) {
+    .footer-minimal {
+        padding: 40px 0 25px 0;
+    }
+
+    .footer-minimal .footer-container {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .footer-brand {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .footer-minimal .footer-contacts {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 20px;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .footer-minimal .sep {
+        display: none; /* Скрываем разделители на мобильных, так как ссылки встают друг под друга */
+    }
+}
+
 
 /* ==========================================
    17. АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ И МОБИЛЬНЫХ
