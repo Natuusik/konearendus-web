@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kõnearendus ja -korrektsioon | Tallinn</title>
-    <!-- Прямое подключение стилей, так как файл лежит в корне -->
-    <link rel="stylesheet" href="style.css">
+    <title>Kõne Arendamine ja Korrektsioon | Tatjana Jefimova | Tallinn</title>
+    <!-- Ühendame välised stiilid -->
+    <link rel="stylesheet" href="style.css?v=2">
+    
+    <!-- Ühendame Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
+
 <body>
 
     <!-- Navigatsioon -->
-        <!-- Navigatsioon mobiilse burgeriga (Eestikeelne versioon) -->
     <header>
         <nav class="nav-container">
-            <a href="index_ee.html" class="logo">Kõnearendus / Развитие речи</a>
+            <a href="#" class="logo">Kõnearendus / Развитие речи</a>
             
-            <!-- Mobiilne burgeri ikoon -->
+            <!-- Mobiilimenüü nupp -->
             <div class="menu-burger" id="burgerToggle">
                 <span></span>
                 <span></span>
@@ -24,6 +27,7 @@
 
             <ul class="nav-links" id="navMenu">
                 <li><a href="#about">Minust</a></li>
+                <li><a href="#education">Haridus</a></li>
                 <li><a href="#services">Teenused</a></li>
                 <li><a href="#contact">Kontakt</a></li>
                 <li><a href="#reviews">Tagasiside</a></li>
@@ -33,22 +37,23 @@
         </nav>
     </header>
 
-
-    <!-- Hero banner -->
+    <!-- Peamine bänner -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Kõnearenduse ja -korrektsiooni erakonsultatsioonid Eestis</h1>
-            <p>Aitan lastel ja täiskasvanutel ületada kõnetõkkeid, parandada diktsiooni ning arendada õiget hääldust.</p>
+            <h1>Eranõustamised kõne arendamiseks ja korrektsiooniks Eestis</h1>
+            <p>Eripedagoog-logopeed. Aitan lastel ja täiskasvanutel ületada kõnetakistusi, parandada diktsiooni ning arendada õiget hääldust.</p>
             <a href="#contact" class="cta-button">Broneeri kohtumine</a>
         </div>
     </section>
 
-    <!-- Minust -->
+    <!-- Minust sektsioon -->
     <section id="about" class="about-section-premium">
+        <!-- Dekoratiivsed taustaelemendid -->
         <div class="decor-blob blob-1"></div>
         <div class="decor-blob blob-2"></div>
 
         <div class="about-premium-container">
+            <!-- Vasak veerg: Raam fotole -->
             <div class="about-visual-box">
                 <div class="photo-frame-wrapper">
                     <div class="photo-frame-accent"></div>
@@ -62,53 +67,92 @@
                 </div>
             </div>
 
+            <!-- Parem veerg: Sisu -->
             <div class="about-content-box">
                 <span class="section-subtitle-premium">Saame tuttavaks</span>
                 <h2 class="section-title-left">Avan enesekindluse läbi õige kõne</h2>
                 
                 <p class="about-accent-lead">
-                    Tere tulemast! Minu nimi on <strong>Tatjana</strong>. Olen diplomeeritud spetsialist kõnearenduse, filoloogia ja kommunikatsioonipraktika valdkonnas.
+                    Tere tulemast! Minu nimi on <strong>Tatjana Jefimova</strong>. Olen kvalifitseeritud spetsialist pedagoogilise, logopeedilise ja eripedagoogilise eriharidusega.
                 </p>
                 
                 <div class="about-text-narrative">
-                    <p>Eestis on minu praktika ametlikult registreeritud era-kõnenõustajana (<em>kõnenõustaja</em>). See tähendab, et iga minu õpilane — olgu see laps, kes alles õpib hääldama keerulisi helisid, või täiskasvanu, kes soovib avalikel esinemistel kõlada enesekindlalt — saab professionaalset, hoolivat ja seaduslikku tuge.</p>
-                    <p>Olen kategooriliselt igava tuupimise vastu. Minu tundides lapsed mängivad, reisivad läbi interaktiivsete maailmade ja märkamatult automatiseerivad häälikuid, täiskasvanud aga omandavad lihtsaid, kuid tõhusaid artikulatsiooni- ja hingamistehnikaid.</p>
+                    <p>Olen spetsialiseerunud kõnehäirete diagnoosimisele ja korrektsioonile, kõne arendamisele ning korrektsioonitööle kooliealiste ja koolieelsete laste ning täiskasvanutega, sealhulgas kakskeelsuse (kakskeelsete laste) tingimustes.</p>
+                    <p>Oman praktilist töökogemust eripedagoog-logopeedina (staaž 4–5 aastat). Tundides kasutan näitlikke veebimaterjale, mängulisi logopeedilisi tehnoloogiaid ja õppematerjalide kohandamise metoodikaid vastavalt iga lapse individuaalsetele eripäradele ning vanusele.</p>
                 </div>
 
+                <!-- Statistika plokk -->
                 <div class="about-mini-stats">
                     <div class="stat-item">
-                        <span class="stat-num">100%</span>
-                        <span class="stat-desc">Interaktiivsed materjalid</span>
+                        <span class="stat-num">4–5 aastat</span>
+                        <span class="stat-desc">Töökogemust</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-num">2</span>
-                        <span class="stat-desc">Õppekeelt (RU / EE)</span>
+                        <span class="stat-num">100%</span>
+                        <span class="stat-desc">Mänguline formaat</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-num">0+</span>
-                        <span class="stat-desc">Stressivabad tunnid</span>
+                        <span class="stat-desc">Stressi tundides</span>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Alumine rida: Peamised oskused -->
         <div class="about-facts-premium-grid">
             <div class="fact-premium-card card-edu">
-                <div class="fact-premium-icon">🎓</div>
-                <h4>Haridus</h4>
-                <p>Kõrgem erialane filoloogiline haridus ja regulaarsed täiendkoolitused kõnetehnoloogiate valdkonnas.</p>
+                <div class="fact-premium-icon">🌐</div>
+                <h4>Töö kakskeelsetega</h4>
+                <p>Logopeediline töö kakskeelsete lastega ning RKI (vene keel võõrkeelena) õpetamise metoodika valdamine.</p>
             </div>
             
             <div class="fact-premium-card card-soft">
                 <div class="fact-premium-icon">🧩</div>
-                <h4>Meeleline lähenemine</h4>
-                <p>Ei mingit stressi ega sundi. Kohandan programmi hoolikalt iga õpilase tempo, iseloomu ja huvidega.</p>
+                <h4>Kompleksne lähenemine</h4>
+                <p>Häälduse korrektsioon, fonemaatilise kuulmise, sidusa kõne ning peen- ja artikulatsioonimotoorika arendamine.</p>
             </div>
             
             <div class="fact-premium-card card-lang">
-                <div class="fact-premium-icon">🌍</div>
-                <h4>Kaks keelt</h4>
-                <p>Konsultatsioonid ja tugi on saadaval nii vene kui ka eesti keeles (keelekeskkonna toetamine).</p>
+                <div class="fact-premium-icon">🤝</div>
+                <h4>Koostöö vanematega</h4>
+                <p>Lastevanemate nõustamine, koolituste läbiviimine ja koostöö korraldamine tulemuste kinnistamiseks kodus.</p>
+            </div>
+        </div>
+    </section> 
+
+    <!-- Haridus ja kvalifikatsioon -->
+    <section id="education" class="services-premium-section" style="background: #f8fafc; padding: 50px 20px;">
+        <div class="section-wrapper">
+            <span class="section-subtitle-premium" style="text-align: center; display: block;">Professionaalne taust</span>
+            <h2 class="section-title">Haridus ja Kvalifikatsioon</h2>
+            
+            <div class="services-premium-grid">
+                <!-- Kõrgharidus -->
+                <div class="service-premium-card">
+                    <div class="service-num">01</div>
+                    <h3>Tallinna Ülikool (TLÜ)</h3>
+                    <p><strong>2025 – 2027 (õpib praegu)</strong><br>Magistriõpe: Vene keele kui võõrkeele õpetaja (RKI)</p>
+                </div>
+
+                <div class="service-premium-card">
+                    <div class="service-num">02</div>
+                    <h3>Sotsiaalametlik Instituut / Sotsiaal-Humanitaarinstituut</h3>
+                    <p><strong>2009 (Tallinn)</strong><br>Kõrgharidus (pedagoogiline / humanitaarala)</p>
+                </div>
+
+                <!-- Täiendkoolitus -->
+                <div class="service-premium-card">
+                    <div class="service-num">03</div>
+                    <h3>Tartu Ülikool</h3>
+                    <p><strong>2025</strong><br>Täiendkoolitus: Koolieelne pedagoogika</p>
+                </div>
+
+                <div class="service-premium-card">
+                    <div class="service-num">04</div>
+                    <h3>Pihkva Riiklik Ülikool</h3>
+                    <p><strong>2021 – 2023</strong><br>Kutsealane ümberõpe: Eripedagoog-logopeed, eripedagoog</p>
+                </div>
             </div>
         </div>
     </section>
@@ -120,139 +164,167 @@
             <h2 class="section-title">Teenused ja Suunad</h2>
             
             <div class="services-premium-grid">
+                <!-- Kaart 1 -->
                 <div class="service-premium-card">
                     <div class="service-num">01</div>
                     <h3>Häälduse korrektsioon</h3>
-                    <p>"Raskete" häälikute (R, L, sisisevad häälikud) seadmine, nende automatiseerimine igapäevases kõnes ja diktsioonivigade leebe parandamine lastel alates 4. eluaastast.</p>
-                    <div class="price-tag">alates 25 € / tund</div>
+                    <p>Raskete häälikute seadmine, automatiseerimine ja eristamine, fonemaatilise kuulmise ning artikulatsioonimotoorika arendamine.</p>
+                    <div class="price-tag">al. 25 € / tund</div>
                 </div>
                 
+                <!-- Kaart 2 -->
                 <div class="service-premium-card">
                     <div class="service-num">02</div>
-                    <h3>Sidus kõne arendamine</h3>
-                    <p>Sõnavara rikastamine, põnev töö lauseehituse kallal, kooliks ettevalmistamine ja keelebarjääri ületamine.</p>
-                    <div class="price-tag">alates 25 € / tund</div>
+                    <h3>Sidusa kõne ja LGS arendamine</h3>
+                    <p>Kõne leksikaalselt grammatilise struktuuri kujundamine, sõnavara rikastamine, kirjaoskuse ettevalmistamine ja töö kakskeelsetega.</p>
+                    <div class="price-tag">al. 25 € / tund</div>
                 </div>
                 
+                <!-- Kaart 3 -->
                 <div class="service-premium-card">
                     <div class="service-num">03</div>
-                    <h3>Konsultatsioon vanematele</h3>
-                    <p>Lapse praeguse kõnearengu analüüs, individuaalsete koduste harjutuste valik ja samm-sammulise arengukaardi koostamine.</p>
+                    <h3>Nõustamine vanematele</h3>
+                    <p>Kõne arengu kompleksne diagnostika, individuaalsete koduste harjutuste valik ja samm-sammuline tegevuskava.</p>
                     <div class="price-tag">30 € / 45 min</div>
                 </div>
                 
-                <!-- Ведет на эстонскую онлайн страницу -->
-                <a href="online_ee.html" target="_blank" class="service-premium-card card-online-link">
+                <!-- Kaart 4 -->
+                <a href="online.html" target="_blank" class="service-premium-card card-online-link">
                     <div class="service-num">04</div>
-                    <h3>Veebitunnid (Online) <span class="open-premium-icon">↗</span></h3>
-                    <p>Tõhus distantsõppe formaat kaikkiyal Eestist. Kasutan interaktiivseid platvorme, põnevaid mänge ja digitaalseid materjale.</p>
-                    <div class="click-hint-premium">Vajuta siia, et näha detaile</div>
+                    <h3>Veebitunnid <span class="open-premium-icon">↗</span></h3>
+                    <p>Kaugõppevorm interaktiivsete logopeediliste mängude, näitlike veebimaterjalide ning vanusele vastava kohandamisega.</p>
+                    <div class="click-hint-premium">Vajuta siia üksikasjade vaatamiseks</div>
                     <div class="price-tag">30 € / 45 min</div>
                 </a>
             </div>
         </div>
-       <!-- lapsevanemate tagasiside plokk (Eesti) -->
-    <section id="reviews" class="reviews-premium-section">
-        <div class="section-wrapper">
-            <span class="section-subtitle-premium" style="text-align: center; display: block;">Tänusõnad</span>
-            <h2 class="section-title">Lapsevanemate tagasiside</h2>
-            
-           <div class="reviews-premium-grid" id="reviewsContainerEE">
-
-                <!-- Tagasiside 1 -->
-                <div class="review-premium-card review-mint">
-                    <div class="review-header">
-                        <span class="review-avatar">👩‍👦</span>
-                        <div>
-                            <h5>Jelena (Maksimi ema, 5 a.)</h5>
-                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="review-text">«Pöördusime Tatjana poole murega — poeg ei hääldanud üldse sisisevaid häälikuid ja L-tähte. Tunnid toimusid väga põnevas mängulises vormis, laps läks sinna rõõmuga!»</p>
-                </div>
-                
-                <!-- Tagasiside 2 -->
-                <div class="review-premium-card review-peach">
-                    <div class="review-header">
-                        <span class="review-avatar">👩‍👧</span>
-                        <div>
-                            <h5>Olga (Sofia ema, 6 a.)</h5>
-                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="review-text">«Läbisime veebikonsultatsioonid ja -tunnid enne kooli. Tütar hakkas rääkima palju enesekindlamalt, moodustades kauneid ja pikki lauseid. Tatjana on oma ala tõeline professionaal!»</p>
-                </div>
-            </div>
-
-            <!-- PEIDETUD BLOKK (Eesti) -->
-            <div class="hidden-reviews-wrapper" id="hiddenReviewsBlockEE">
-                <div class="reviews-premium-grid" style="margin-top: 30px;">
-                    <!-- Tagasiside 3 -->
-                    <div class="review-premium-card review-cyan">
-                        <div class="review-header">
-                            <span class="review-avatar">👨‍👦</span>
-                            <div>
-                               <h5>Dmitri (Artemi isa, 7 a.)</h5>
-                                <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                            </div>
-                        </div>
-                        <p class="review-text">«Suur tänu kooliks ettevalmistamise eest. Laps läks esimesse klassi puhta kõnega ja oskusega oma mõtteid selgelt sõnastada.»</p>
-                    </div>
-
-                    <!-- Tagasiside 4 -->
-                    <div class="review-premium-card review-lavender">
-                        <div class="review-header">
-                            <span class="review-avatar">👩‍👦</span>
-                            <div>
-                                <h5>Anna (Nikita ema, 4 a.)</h5>
-                                <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                            </div>
-                        </div>
-                        <p class="review-text">«Suurepärane spetsialist. Hooliv lähenemine, leidis kiiresti ühise keele keerulise lapsega. Harjutusi tegime kodus põneva mänguna.»</p>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 30px;">
-                <button class="cta-button review-btn" id="toggleReviewsBtnEE">Vaata kõiki tagasisidesid ▼</button>
-            </div>
-
-            <div class="leave-review-box">
-                <p>Kas olete minu juures õppinud ja soovite oma tulemust jagada?</p>
-              
-                <a href="https://forms.gle/Yr69NUek5A4KHaJp7" class="cta-button review-btn" id="leaveReviewLink">>Jäta tagasiside</a>
-            </div>
-        </div>
     </section>
 
-    <!-- Kontakt -->
-    <section id="contact">
-        <h2 class="section-title">Registreeru konsultatsioonile</h2>
-        <div class="contact-container">
-            <form id="speechFormEE">
+    <!-- Tagasiside -->
+    <section id="reviews" class="reviews-section">
+      <h2>Tagasiside</h2>
+
+      <!-- Nupp "Jäta tagasiside" -->
+      <div class="reviews-actions">
+        <a href="https://natuusik.github.io/telegram-tutor-bot/" target="_blank" rel="noopener noreferrer" class="btn-review">
+          Jäta tagasiside
+        </a>
+      </div>
+
+      <!-- Nähtavad arvustused -->
+      <div class="reviews-container">
+        
+        <!-- Arvustus 1 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Anna</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Suutis kohe leida kontakti: tunnid toimuvad mängulises ja põnevas vormis, ilma pingeta. Juba paari kuu pärast nägime suurt edu — häälikud «R» ja «Š» tulid kohale ning kõne muutus selgeks. Ja mis kõige tähtsam — laps ootas iga tundi põnevusega!</p>
+        </div>
+
+        <!-- Arvustus 2 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Maksim</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Suur tänu professionaalsuse ja hoolivuse eest!</p>
+        </div>
+
+        <!-- Täiendavad arvustused (vaikimisi peidetud) -->
+        <div class="review-card extra-review hidden">
+          <div class="review-header">
+            <span class="review-author">Jelena</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Oleme õppinud juba kuu aega, tulemused on suurepärased!</p>
+        </div>
+
+        <div class="review-card extra-review hidden">
+          <div class="review-header">
+            <span class="review-author">Dmitri</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Hea spetsialist, soovitan soojalt ka sõpradele.</p>
+        </div>
+
+      </div>
+
+      <!-- Nupp täiendavate arvustuste kuvamiseks -->
+      <div class="more-reviews-wrapper">
+        <button id="toggle-reviews-btn" class="btn-more">Vaata kõiki arvustusi</button>
+      </div>
+    </section>
+
+    <!-- Kontaktivorm -->
+    <section id="contact" class="feedback-section">
+        <div class="feedback-card">
+            <div class="feedback-header">
+                <h2>Küsi küsimus või registreeru</h2>
+                <p>Täida vorm ja ma vastan sulle e-postile (või võta otse ühendust: <a href="mailto:tatjanajefimova12@gmail.com">tatjanajefimova12@gmail.com</a>, tel. <a href="tel:+37258417216">+372 58417216</a>)</p>
+            </div>
+
+            <form action="https://api.web3forms.com/submit" method="POST" class="feedback-form">
+                <!-- Web3Forms võti -->
+                <input type="hidden" name="access_key" value="25a52992-4258-4960-beb2-fb81d4c2fea8">
+                <input type="hidden" name="subject" value="Uus päring veebilehelt (EST)">
+
                 <div class="form-group">
-                    <label for="nameEE">Teie nimi:</label>
-                    <input type="text" id="nameEE" required placeholder="Mari Tamm">
+                    <label for="feedback-name">Sinu nimi</label>
+                    <input type="text" id="feedback-name" name="name" placeholder="Kuidas teie poole pöörduda?" required>
                 </div>
+
                 <div class="form-group">
-                    <label for="emailEE">Telefon või e-post:</label>
-                    <input type="text" id="emailEE" required placeholder="+372 ... / e-mail@example.com">
+                    <label for="feedback-email">E-posti aadress</label>
+                    <input type="email" id="feedback-email" name="email" placeholder="email@example.com" required>
                 </div>
+
                 <div class="form-group">
-                    <label for="messageEE">Olukorra kirjeldus (vanus, mured):</label>
-                    <textarea id="messageEE" placeholder="Näiteks: Laps on 5-aastane, ei häälda R-tähte..."></textarea>
+                    <label for="feedback-message">Küsimus / Olukorra kirjeldus</label>
+                    <textarea id="feedback-message" name="message" rows="4" placeholder="Märkige lapse vanus, kirjeldage kõneraskusi või esitage küsimus..." required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Saada avaldus</button>
+
+                <button type="submit" class="feedback-submit-btn">
+                    <span>Saada sõnum</span>
+                </button>
             </form>
         </div>
     </section>
 
+    <!-- Jalus / Footer -->
     <footer>
-        <p>&copy; 2026 Kõnearendus ja konsultatsioonid. Tallinn, Estonia.</p>
-        <p class="legal-notice">Tegevus on nõustava ja arendava iseloomuga.</p>
+        <div class="footer-container">
+            <p class="footer-copy">&copy; 2026 Tatjana Jefimova | Kõnenõustaja. Tallinn, Eesti.</p>
+            <p class="footer-contacts">
+                E-post: <a href="mailto:tatjanajefimova12@gmail.com">tatjanajefimova12@gmail.com</a> | 
+                Tel: <a href="tel:+37258417216">+372 58417216</a>
+            </p>
+            <p class="legal-notice">Tegevus on nõustava ja arendava iseloomuga.</p>
+        </div>
     </footer>
 
-<script src="script.js?v=999"></script>
+    <!-- Ühendame skriptid -->
+    <script src="script.js?v=999"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.getElementById('toggle-reviews-btn');
+        const extraReviews = document.querySelectorAll('.extra-review');
+        let isExpanded = false;
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+              isExpanded = !isExpanded;
+              
+              extraReviews.forEach(card => {
+                card.classList.toggle('hidden', !isExpanded);
+              });
+
+              toggleBtn.textContent = isExpanded ? 'Peida arvustused' : 'Vaata kõiki arvustusi';
+            });
+        }
+      });
+    </script>
 
 </body>
 </html>
