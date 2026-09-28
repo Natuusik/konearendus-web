@@ -230,6 +230,7 @@
 
 
    <!-- Контакты и запись -->
+<!-- Контакты и запись -->
 <section id="contact" class="contact-section">
     <h2 class="section-title">Запись на консультацию</h2>
 
@@ -244,17 +245,17 @@
         </button>
     </div>
 
-    <!-- Форма записи Web3Forms (скрыта по умолчанию) -->
+    <!-- Форма записи Web3Forms БЕЗ ЗВЁЗД (скрыта по умолчанию) -->
     <div id="contact-form-wrapper" class="contact-form-wrapper hidden">
         <form action="https://api.web3forms.com/submit" method="POST" class="speech-form">
-            <!-- Ваш ключ доступа Web3Forms -->
+            <!-- Тот же самый ключ Web3Forms -->
             <input type="hidden" name="access_key" value="25a52992-4258-4960-beb2-fb81d4c2fea8">
-            <!-- Тема письма, которое придет вам на почту -->
-            <input type="hidden" name="subject" value="Новая заявка на консультацию с сайта">
+            <!-- Тема письма, чтобы вы понимали, что это заявка, а не отзыв -->
+            <input type="hidden" name="subject" value="Новая заявка на консультацию!">
 
             <div class="form-group">
                 <label for="contact-name">Ваше имя</label>
-                <input type="text" id="contact-name" name="name" placeholder="Например: Иван Иванов" required>
+                <input type="text" id="contact-name" name="name" placeholder="Например: Иван" required>
             </div>
 
             <div class="form-group">
@@ -263,7 +264,7 @@
             </div>
 
             <div class="form-group">
-                <label for="contact-message">Описание ситуации (возраст, какие трудности)</label>
+                <label for="contact-message">Описание ситуации (возраст ребенка, трудности)</label>
                 <textarea id="contact-message" name="message" placeholder="Например: Ребенку 5 лет, не выговаривает букву Р..." required></textarea>
             </div>
 
