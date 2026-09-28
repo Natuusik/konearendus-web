@@ -302,3 +302,24 @@ async function loadLiveReviews() {
 
 document.addEventListener('DOMContentLoaded', loadLiveReviews);
 
+
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleFormBtn = document.getElementById('toggle-form-btn');
+    const formWrapper = document.getElementById('contact-form-wrapper');
+    let isFormOpen = false;
+
+    toggleFormBtn.addEventListener('click', () => {
+      isFormOpen = !isFormOpen;
+      
+      // Показываем или скрываем форму
+      formWrapper.classList.toggle('hidden', !isFormOpen);
+
+      // Меняем текст на кнопке
+      toggleFormBtn.textContent = isFormOpen 
+        ? 'Скрыть форму записи' 
+        : 'Заполнить форму на сайте';
+    });
+  });
+
