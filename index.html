@@ -258,7 +258,24 @@
 
     <!-- Подключаем внешний скрипт логики -->
 <script src="script.js?v=999"></script>
- 
+ <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('toggle-reviews-btn');
+    const extraReviews = document.querySelectorAll('.extra-review');
+    let isExpanded = false;
+
+    toggleBtn.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      
+      extraReviews.forEach(card => {
+        card.classList.toggle('hidden', !isExpanded);
+      });
+
+      toggleBtn.textContent = isExpanded ? 'Скрыть отзывы' : 'Посмотреть все отзывы';
+    });
+  });
+</script>
+
 
 </body>
 </html>
