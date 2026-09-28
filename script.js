@@ -323,3 +323,23 @@ document.addEventListener('DOMContentLoaded', loadLiveReviews);
     });
   });
 
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Мобильное меню (Бургер) ---
+    const burger = document.getElementById('burgerToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    if (burger && navMenu) {
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Закрывать меню при клике на любую ссылку внутри
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+});
