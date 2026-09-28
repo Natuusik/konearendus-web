@@ -1105,3 +1105,19 @@ section {
         font-size: 1.5rem; 
     }
 }
+/* ==========================================
+   19. ЛОКАЛИЗАЦИЯ И МЕТКИ (EESTI KEEL)
+   ========================================== */
+/* Стилизация активной кнопки языка */
+.lang-switch .lang-active {
+    background-color: var(--primary-color);
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+/* Настройки переносов длинных эстонских слов на мобильных */
+.footer-minimal, 
+.mobile-card {
+    hyphens: auto;
+    word-wrap: break-word;
+}
