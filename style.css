@@ -291,13 +291,12 @@ section {
         font-size: 22px;
     }
 }
- ==========================================
-   8. СТИЛИ ДЛЯ ИНТЕРАКТИВНОЙ КАРТОЧКИ-ССЫЛКИ
-   (На главной странице в блоке услуг)
+ /* ==========================================
+   6. ИНТЕРАКТИВНАЯ КАРТОЧКА-ССЫЛКА (УСЛУГИ)
    ========================================== */
 .service-card-link {
-    text-decoration: none; /* Убираем стандартное подчеркивание ссылки */
-    color: inherit;         /* Карточка наследует основной цвет текста */
+    text-decoration: none;
+    color: inherit;
     display: block;
 }
 
@@ -315,37 +314,85 @@ section {
 }
 
 /* ==========================================
-   9. ОБЩАЯ МЕДИА-АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ
+   7. МЕДИА-АДАПТИВНОСТЬ (ШАПКА И БУРГЕР-МЕНЮ)
    ========================================== */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none; /* Скрываем стандартные ссылки на мобильных */
-    }
-    
+    /* Стили главного баннера на мобильных */
     .hero {
         padding: 120px 20px 60px;
     }
-    
     .hero h1 {
         font-size: 1.8rem;
     }
-    
     .hero p {
         font-size: 1rem;
+    }
+
+    /* --- Настройка мобильного выпадающего меню --- */
+    .menu-burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 28px;
+        height: 20px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .menu-burger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: var(--dark-title);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    /* Анимация бургера в "крестик" */
+    .menu-burger.active span:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+    }
+    .menu-burger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-burger.active span:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+    }
+
+    /* Скрываем обычное меню и делаем его выдвижным */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 280px;
+        height: 100vh;
+        background-color: #ffffff;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        right: 0 !important; /* Показываем меню при клике */
     }
 }
 
 /* ==========================================
-   10. ПРЕМИАЛЬНЫЙ ДИЗАЙН "О СПЕЦИАЛИСТЕ" (ИНДЕКС)
+   8. ПРЕМИАЛЬНЫЙ ДИЗАЙН "О СПЕЦИАЛИСТЕ"
    ========================================== */
 .about-section-premium {
     position: relative;
     padding: 100px 20px;
     background-color: #ffffff;
-    overflow: hidden; /* Скрывает выходящие за рамки декоративные круги */
+    overflow: hidden;
 }
 
-/* Декоративные плавные пятна на фоне */
 .decor-blob {
     position: absolute;
     border-radius: 50%;
@@ -372,7 +419,7 @@ section {
 
 .about-premium-container {
     position: relative;
-    z-index: 2; /* Поднимаем контент над фоновыми пятнами */
+    z-index: 2;
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
@@ -381,7 +428,7 @@ section {
     align-items: center;
 }
 
-/* Визуальный бокс с эффектом наложения слоев */
+/* Визуальный бокс для фото */
 .about-visual-box {
     position: relative;
     display: flex;
@@ -395,7 +442,6 @@ section {
     height: 360px;
 }
 
-/* Смещенная дизайнерская рамка на заднем плане */
 .photo-frame-accent {
     position: absolute;
     width: 100%;
@@ -407,7 +453,6 @@ section {
     z-index: 1;
 }
 
-/* Сама карточка для фотографии */
 .premium-photo-placeholder {
     position: absolute;
     width: 100%;
@@ -429,30 +474,37 @@ section {
     object-fit: cover;
 }
 
+/* Адаптивность для блока "О специалисте" */
+@media (max-width: 900px) {
+    .about-premium-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+}
 
 /* ==========================================
-   11. КРАСОЧНЫЕ СЕКЦИИ СТРАНИЦЫ ОНЛАЙН (ONLINE)
+   9. КРАСОЧНЫЕ СЕКЦИИ СТРАНИЦЫ ОНЛАЙН (ONLINE)
    ========================================== */
 .online-page-body {
-    background-color: #f4f7f6; /* Мягкий светлый фон для контраста карточек */
+    background-color: #f4f7f6;
     padding: 110px 15px 40px 15px;
 }
 
 .online-mobile-container {
-    max-width: 650px; /* Ограничиваем ширину для эффекта мобильного экрана на ПК */
+    max-width: 650px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/* Общие стили для всех карточек-блоков */
 .mobile-card {
     background: #ffffff;
     border-radius: 16px;
     padding: 25px 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-    border-left: 6px solid #cccccc; /* Базовая цветная полоса слева */
+    border-left: 6px solid #cccccc;
     transition: transform 0.2s ease;
 }
 
@@ -472,7 +524,6 @@ section {
     line-height: 1.5;
 }
 
-/* Индивидуальные пастельные маркеры для блоков */
 .card-hero { border-left-color: var(--primary-color); text-align: center; }
 .card-hero h1 { font-size: 1.8rem; color: var(--dark-title); margin: 10px 0; }
 .card-hero .badge { background: var(--secondary-color); padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; }
@@ -484,32 +535,12 @@ section {
 .card-yellow { border-left-color: #fbe3b5; background: #fffff9; }
 .card-contact { border-left-color: #3b82f6; background: #f8fafc; }
 
-/* Списки с эмодзи-иконками */
-.bullet-list {
-    list-style: none;
-}
+.bullet-list { list-style: none; }
+.bullet-list li { margin-bottom: 12px; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 10px; color: #4a5568; }
 
-.bullet-list li {
-    margin-bottom: 12px;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    color: #4a5568;
-}
+.timeline-list { padding-left: 15px; color: #4a5568; }
+.timeline-list li { margin-bottom: 12px; font-size: 0.95rem; }
 
-/* Стиль для списка по минутам */
-.timeline-list {
-    padding-left: 15px;
-    color: #4a5568;
-}
-
-.timeline-list li {
-    margin-bottom: 12px;
-    font-size: 0.95rem;
-}
-
-/* Кнопка возврата и контакты */
 .direct-contacts {
     margin: 15px 0;
     background: #edf2f7;
@@ -517,11 +548,7 @@ section {
     border-radius: 8px;
 }
 
-.direct-contacts a {
-    color: #3b82f6;
-    text-decoration: none;
-    font-weight: 500;
-}
+.direct-contacts a { color: #3b82f6; text-decoration: none; font-weight: 500; }
 
 .back-btn-blue {
     display: block;
@@ -536,9 +563,7 @@ section {
     transition: background-color 0.2s ease;
 }
 
-.back-btn-blue:hover {
-    background-color: #2563eb;
-}
+.back-btn-blue:hover { background-color: #2563eb; }
 
 /* ==========================================
    12. ДЕТАЛИ КОНТЕНТА "О СПЕЦИАЛИСТЕ" (ИНДЕКС)
