@@ -918,36 +918,43 @@ section {
 }
 /* ==========================================
    17. АНИМАЦИОННОЕ МОБИЛЬНОЕ МЕНЮ БУРГЕР
-   ========================================== /* Базовые стили для бургера (скрыт на ПК) */
-.menu-burger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 20px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.menu-burger span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: #2c3e50;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-/* Мобильная версия (для экранов меньше 768px) */
+   ========================================== /* --- Стили для мобильного меню --- */
 @media (max-width: 768px) {
     .menu-burger {
-        display: flex; /* Показываем бургер на мобильных */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 28px;
+        height: 20px;
+        cursor: pointer;
+        z-index: 1001;
     }
 
+    .menu-burger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #2c3e50;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    /* Превращение бургера в крестик */
+    .menu-burger.active span:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+    }
+    .menu-burger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-burger.active span:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+    }
+
+    /* Выдвижное меню */
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%; /* Скрываем меню за правым краем */
+        right: -100%;
         width: 75%;
         max-width: 280px;
         height: 100vh;
@@ -963,22 +970,65 @@ section {
         z-index: 1000;
     }
 
-    /* Класс, который добавляет JavaScript при клике */
-    .nav-links.open {
-        right: 0; /* Выдвигаем меню */
-    }
-
-    /* Анимация иконки бургера в крестик при открытии */
-    .menu-burger.open span:nth-child(1) {
-        transform: translateY(8.5px) rotate(45deg);
-    }
-    .menu-burger.open span:nth-child(2) {
-        opacity: 0;
-    }
-    .menu-burger.open span:nth-child(3) {
-        transform: translateY(-8.5px) rotate(-45deg);
+    .nav-links.active {
+        right: 0 !important;
     }
 }
+
+/* --- Стили минималистичного футера --- */
+.footer-minimal {
+    background: #1e293b;
+    color: #94a3b8;
+    padding: 20px 0;
+    margin-top: 60px;
+    font-size: 0.9rem;
+    border-top: 1px solid #334155;
+}
+
+.footer-minimal .footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-minimal em {
+    color: #cbd5e1;
+    font-style: italic;
+}
+
+.footer-minimal .footer-contacts {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-minimal a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-minimal a:hover {
+    color: #38bdf8;
+}
+
+.footer-minimal .sep {
+    color: #475569;
+}
+
+@media (max-width: 600px) {
+    .footer-minimal .footer-container {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
  ==========================================
    18. СТИЛЬНЫЙ ПРЕМИУМ-БЛОК ОТЗЫВОВ
    ========================================== /* Стили секции отзывов */
