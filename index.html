@@ -230,37 +230,41 @@
 
 
    <!-- Контакты и запись -->
- <!-- Простая форма вопроса на главной странице -->
-<section class="simple-contact-section">
-    <div class="simple-contact-card">
-        <h2>Задать вопрос</h2>
-        <p>Заполните форму, и я отвечу вам на электронную почту:</p>
+<!-- Эстетичная форма обратной связи на главной странице -->
+<section class="feedback-section">
+    <div class="feedback-card">
+        <div class="feedback-header">
+            <h2>Задать вопрос</h2>
+            <p>Заполните форму, и я отвечу вам на указанную электронную почту</p>
+        </div>
 
-        <form action="https://api.web3forms.com/submit" method="POST" class="simple-form">
-            <!-- Ваш ключ доступа Web3Forms -->
+        <form action="https://api.web3forms.com/submit" method="POST" class="feedback-form">
+            <!-- Ваш ключ Web3Forms -->
             <input type="hidden" name="access_key" value="25a52992-4258-4960-beb2-fb81d4c2fea8">
-            <!-- Тема письма, которое придет вам на почту -->
-            <input type="hidden" name="subject" value="Новый вопрос с главной страницы">
+            <input type="hidden" name="subject" value="Новый вопрос с сайта">
 
             <div class="form-group">
-                <label for="user-name">Имя</label>
-                <input type="text" id="user-name" name="name" placeholder="Ваше имя" required>
+                <label for="feedback-name">Ваше имя</label>
+                <input type="text" id="feedback-name" name="name" placeholder="Как к вам обращаться?" required>
             </div>
 
             <div class="form-group">
-                <label for="user-email">Электронная почта</label>
-                <input type="email" id="user-email" name="email" placeholder="name@example.com" required>
+                <label for="feedback-email">Электронная почта</label>
+                <input type="email" id="feedback-email" name="email" placeholder="email@example.com" required>
             </div>
 
             <div class="form-group">
-                <label for="user-message">Вопрос</label>
-                <textarea id="user-message" name="message" rows="4" placeholder="Напишите ваш вопрос..." required></textarea>
+                <label for="feedback-message">Ваш вопрос</label>
+                <textarea id="feedback-message" name="message" rows="4" placeholder="Опишите ваш вопрос или ситуацию..." required></textarea>
             </div>
 
-            <button type="submit" class="submit-btn">Отправить вопрос</button>
+            <button type="submit" class="feedback-submit-btn">
+                <span>Отправить сообщение</span>
+            </button>
         </form>
     </div>
 </section>
+
 
 
 
