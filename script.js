@@ -1,15 +1,14 @@
-
-  ==========================================
-// 1. ПЛАВНАЯ ПРОКРУТКА ДЛЯ ССЫЛОК-ЯКОРЕЙ + ЗАКРЫТИЕ МЕНЮ
+// ==========================================
+// 1. ПЛАВНАЯ ПРОКРУТКА ДЛЯ ССЫЛОК-ЯКОРЕЙ
 // ==========================================
 document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
         
-        // Пропускаем ссылки, если это не якорные ссылки (например, index_ee.html)
+        // Пропускаем обычные ссылки на другие страницы (например, index_ee.html)
         if (!targetId || !targetId.startsWith('#')) return; 
 
-        // Игнорируем клик по одиночному символу "#" (чтобы не падал JS)
+        // Если это просто клик по наверх или логотипу "#"
         if (targetId === '#') {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -23,7 +22,7 @@ document.querySelectorAll('nav a').forEach(anchor => {
                 behavior: 'smooth'
             });
 
-            // Автоматически закрываем мобильное меню при клике на любую ссылку
+            // Закрываем меню при переходе по якорной ссылке
             const burger = document.getElementById('burgerToggle');
             const navMenu = document.getElementById('navMenu');
             if (burger && navMenu) {
@@ -33,7 +32,8 @@ document.querySelectorAll('nav a').forEach(anchor => {
         }
     });
 });
-  //==========================================
+
+// ==========================================
 // 2. МОБИЛЬНОЕ МЕНЮ БУРГЕР
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,13 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.getElementById('navMenu');
 
     if (burger && navMenu) {
-        // Открытие / закрытие по клику на иконку
+        // Открытие / закрытие по клику на гамбургер
         burger.addEventListener('click', () => {
             burger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
 
-        // Закрытие при клике на любую ссылку в меню
+        // Закрытие меню при клике на любой пункт внутри
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 burger.classList.remove('active');
@@ -56,6 +56,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-  
-
