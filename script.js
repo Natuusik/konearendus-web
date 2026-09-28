@@ -74,18 +74,27 @@ document.querySelectorAll('nav a').forEach(anchor => {
 // ==========================================
 // 2. МОБИЛЬНОЕ МЕНЮ БУРГЕР
 // ==========================================
-// --- Мобильное меню (Бургер) ---
+document.addEventListener('DOMContentLoaded', () => {
     const burger = document.getElementById('burgerToggle');
     const navMenu = document.getElementById('navMenu');
 
     if (burger && navMenu) {
+        // Открытие / закрытие по клику на бургер
         burger.addEventListener('click', () => {
-            burger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            burger.classList.toggle('open');
+            navMenu.classList.toggle('open');
         });
 
-        // Закрывать меню при клике на любую ссылку внутри
-        navMenu.querySelectorAll('a'). ==========================================
+        // Закрытие меню при выборе любого пункта
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('open');
+                navMenu.classList.remove('open');
+            });
+        });
+    }
+});
+ ==========================================
 // 3. ОТПРАВКА ФОРМЫ ЗАПИСИ (РУССКАЯ ВЕРСИЯ)
 // ==========================================
 const speechForm = document.getElementById('speechForm');
