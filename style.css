@@ -1061,83 +1061,17 @@ section {
 
 
 
-/* Красивый и современный футер */
-.footer-premium {
+/* Минималистичный футер-полоска */
+.footer-minimal {
     background: #1e293b;
-    color: #f8fafc;
-    padding-top: 50px;
-    margin-top: 60px;
-    font-family: inherit;
-}
-
-.footer-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px 40px 20px;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1.5fr;
-    gap: 40px;
-}
-
-.footer-brand .footer-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #ffffff;
-    text-decoration: none;
-    display: inline-block;
-    margin-bottom: 12px;
-}
-
-.footer-tagline {
     color: #94a3b8;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    max-width: 320px;
-}
-
-.footer-nav h4,
-.footer-contacts h4 {
-    color: #ffffff;
-    font-size: 1.1rem;
-    margin-bottom: 16px;
-    position: relative;
-}
-
-.footer-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-nav ul li {
-    margin-bottom: 10px;
-}
-
-.footer-nav ul li a,
-.footer-contacts a {
-    color: #cbd5e1;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.footer-nav ul li a:hover,
-.footer-contacts a:hover {
-    color: #38bdf8;
-}
-
-.footer-contacts p {
-    color: #cbd5e1;
-    margin-bottom: 10px;
-    font-size: 0.95rem;
-}
-
-.footer-bottom {
-    border-top: 1px solid #334155;
     padding: 20px 0;
-    background: #0f172a;
+    margin-top: 60px;
+    font-size: 0.9rem;
+    border-top: 1px solid #334155;
 }
 
-.footer-bottom-container {
+.footer-minimal .footer-container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
@@ -1145,24 +1079,39 @@ section {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
-    font-size: 0.85rem;
-    color: #94a3b8;
+    gap: 12px;
 }
 
-.footer-bottom-container em {
+.footer-minimal em {
     color: #cbd5e1;
+    font-style: italic;
 }
 
-/* Адаптируемость футера для мобильных устройств */
-@media (max-width: 768px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
+.footer-minimal .footer-contacts {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-    .footer-bottom-container {
+.footer-minimal a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-minimal a:hover {
+    color: #38bdf8;
+}
+
+.footer-minimal .sep {
+    color: #475569;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+    .footer-minimal .footer-container {
         flex-direction: column;
         text-align: center;
+        justify-content: center;
     }
 }
