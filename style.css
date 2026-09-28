@@ -14,12 +14,16 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
 }
 
@@ -56,6 +60,7 @@ header {
     display: flex;
     list-style: none;
     gap: 20px;
+    align-items: center;
 }
 
 .nav-links a {
@@ -67,6 +72,11 @@ header {
 
 .nav-links a:hover {
     color: var(--primary-color);
+}
+
+/* Иконка бургера для мобильных устройств */
+.menu-burger {
+    display: none;
 }
 
 /* ==========================================
