@@ -1,77 +1,39 @@
-document.getElementById('review-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Стопим перезагрузку страницы
 
-  const form = event.target;
-  const btn = document.getElementById('submit-btn');
-  const statusDiv = document.getElementById('form-status');
-
-  // 1. Показываем клиенту, что процесс пошел
-  btn.disabled = true;
-  statusDiv.style.display = 'block';
-  statusDiv.style.color = '#333';
-  statusDiv.innerHTML = 'Ваш отзыв обрабатывается и отправляется на модерацию...';
-
-  // 2. Собираем все данные из полей HTML формы
-  const formData = new FormData(form);
-
-  // 3. Переводим данные в формат JSON (без этого Web3Forms выдаст ошибку)
-  const object = Object.fromEntries(formData);
-  const json = JSON.stringify(object);
-
-  // 4. Отправляем данные на сервера Web3Forms
-  fetch('https://web3forms.com', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: json
-  })
-  .then(async (response) => {
-    const result = await response.json();
-    
-    if (response.ok && result.success) {
-      // Если всё улетело успешно — красим текст в зеленый
-      statusDiv.style.color = 'green';
-      statusDiv.innerHTML = 'Спасибо! Ваш отзыв успешно отправлен и появится на сайте после проверки.';
-      form.reset(); // Очищаем форму для следующего отзыва
-    } else {
-      // Если сервис вернул ошибку (например, ключ не подошел)
-      statusDiv.style.color = 'red';
-      statusDiv.innerHTML = result.message || 'Произошла ошибка при отправке.';
-    }
-  })
-  .catch(error => {
-    // Если упал сам интернет или заблокировал браузер локально
-    statusDiv.style.color = 'red';
-    statusDiv.innerHTML = 'Произошла сетевая ошибка. Пожалуйста, попробуйте позже.';
-  })
-  .finally(() => {
-    // В любом случае возвращаем кнопку в рабочее состояние
-    btn.disabled = false;
-  });
-});
-
-
-// ==========================================
-// 1. ПЛАВНАЯ ПРОКРУТКА ДЛЯ ССЫЛОК-ЯКОРЕЙ
+ // ==========================================
+// 1. ПЛАВНАЯ ПРОКРУТКА ДЛЯ ССЫЛОК-ЯКОРЕЙ + ЗАКРЫТИЕ МЕНЮ
 // ==========================================
 document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
-        if (!targetId.startsWith('#')) return; 
         
-        e.preventDefault();
+        // Пропускаем ссылки, если это не якорные ссылки (например, index_ee.html)
+        if (!targetId || !targetId.startsWith('#')) return; 
+
+        // Игнорируем клик по одиночному символу "#" (чтобы не падал JS)
+        if (targetId === '#') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
+            e.preventDefault();
             targetElement.scrollIntoView({
                 behavior: 'smooth'
             });
+
+            // Автоматически закрываем мобильное меню при клике на любую ссылку
+            const burger = document.getElementById('burgerToggle');
+            const navMenu = document.getElementById('navMenu');
+            if (burger && navMenu) {
+                burger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
         }
     });
 });
-
-// ==========================================
+ ==========================================
 // 2. МОБИЛЬНОЕ МЕНЮ БУРГЕР
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
