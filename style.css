@@ -197,70 +197,114 @@ section {
 
 /* ==========================================
    6. ФОРМА ОБРАТНОЙ СВЯЗИ (CONTACT FORM)
-   ========================================== */
-.contact-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: #ffffff;
-    padding: 40px;
+   ========================================== /* Секция контактов */
+.contact-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.contact-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+/* Кнопка Telegram */
+.btn-telegram {
+    display: inline-block;
+    background-color: #2481cc;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.btn-telegram:hover {
+    background-color: #1c6ba8;
+}
+
+/* Кнопка открытия/закрытия формы */
+.btn-toggle-form {
+    background: transparent;
+    border: 2px solid #2481cc;
+    color: #2481cc;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-toggle-form:hover {
+    background-color: #2481cc;
+    color: #ffffff;
+}
+
+/* Обёртка формы и скрытие */
+.contact-form-wrapper {
+    margin-top: 20px;
+    text-align: left;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    padding: 24px;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
 }
 
-.form-group {
-    margin-bottom: 20px;
+.contact-form-wrapper.hidden {
+    display: none;
 }
 
-.form-group label {
+/* Элементы формы */
+.speech-form .form-group {
+    margin-bottom: 16px;
+}
+
+.speech-form label {
     display: block;
-    margin-bottom: 7px;
-    font-weight: 500;
-    color: var(--dark-title);
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
 }
 
-.form-group input, 
-.form-group textarea {
+.speech-form input[type="text"],
+.speech-form textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #dddddd;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 1rem;
-    color: var(--text-color);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
-/* Красивая подсветка полей при клике */
-.form-group input:focus, 
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(127, 181, 181, 0.15);
-}
-
-.form-group textarea {
-    height: 120px;
+.speech-form textarea {
+    min-height: 100px;
     resize: vertical;
 }
 
-.submit-btn {
-    background-color: var(--primary-color);
-    color: #ffffff;
-    border: none;
-    padding: 14px 20px;
-    border-radius: 6px;
-    cursor: pointer;
+.speech-form .submit-btn {
     width: 100%;
-    font-size: 1rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
     font-weight: bold;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-.submit-btn:hover {
-    background-color: var(--primary-hover);
-    box-shadow: 0 5px 15px rgba(127, 181, 181, 0.2);
+.speech-form .submit-btn:hover {
+    background-color: #218838;
 }
-
-/* ==========================================
+ ==========================================
    7. ФУТЕР САЙТА (FOOTER)
    ========================================== */
 footer {
