@@ -1061,54 +1061,108 @@ section {
 
 
 
-footer {
-    background-color: #1a202c;
-    color: #a0aec0;
-    padding: 30px 20px;
-    text-align: center;
-    font-size: 14px;
-    line-height: 1.6;
+/* Красивый и современный футер */
+.footer-premium {
+    background: #1e293b;
+    color: #f8fafc;
+    padding-top: 50px;
+    margin-top: 60px;
+    font-family: inherit;
 }
 
-.footer-copy {
-    color: #e2e8f0;
-    font-weight: 500;
-    margin-bottom: 8px;
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 40px 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 40px;
 }
 
-.footer-contacts {
+.footer-brand .footer-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-block;
     margin-bottom: 12px;
 }
 
+.footer-tagline {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+.footer-nav h4,
+.footer-contacts h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav ul li {
+    margin-bottom: 10px;
+}
+
+.footer-nav ul li a,
 .footer-contacts a {
-    color: #63b3ed;
+    color: #cbd5e1;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
+.footer-nav ul li a:hover,
 .footer-contacts a:hover {
-    color: #90cdf4;
-    text-decoration: underline;
+    color: #38bdf8;
 }
 
-.legal-notice {
-    font-size: 12px;
-    color: #718096;
-    margin: 0;
+.footer-contacts p {
+    color: #cbd5e1;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
 }
 
-.btn-more {
-  background: transparent;
-  border: 1px solid #2481cc;
-  color: #2481cc;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease;
+.footer-bottom {
+    border-top: 1px solid #334155;
+    padding: 20px 0;
+    background: #0f172a;
 }
 
-.btn-more:hover {
-  background-color: #2481cc;
-  color: #fff;
+.footer-bottom-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.footer-bottom-container em {
+    color: #cbd5e1;
+}
+
+/* Адаптируемость футера для мобильных устройств */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-bottom-container {
+        flex-direction: column;
+        text-align: center;
+    }
 }
